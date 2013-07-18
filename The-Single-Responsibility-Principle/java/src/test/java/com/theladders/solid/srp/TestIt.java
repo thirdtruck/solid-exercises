@@ -211,7 +211,7 @@ public class TestIt
   }
   
   @Test
-  public void resumeIsMadeActiveByController()
+  public void resumeIsMadeActiveByResumeController()
   {
     Jobseeker JOBSEEKER = new Jobseeker(APPROVED_JOBSEEKER, true);
     HttpSession session = new HttpSession(JOBSEEKER);
@@ -228,7 +228,7 @@ public class TestIt
   }
 
   @Test
-  public void resumeIsSavedByController()
+  public void resumeIsSavedByResumeController()
   {
     Jobseeker JOBSEEKER = new Jobseeker(APPROVED_JOBSEEKER, true);
     HttpSession session = new HttpSession(JOBSEEKER);

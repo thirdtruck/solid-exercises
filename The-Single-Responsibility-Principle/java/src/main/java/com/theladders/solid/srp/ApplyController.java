@@ -128,23 +128,8 @@ public class ApplyController
                                                  Jobseeker jobseeker,
                                                  HttpRequest request)
   {
-    Resume resume;
-
-    if (!"existing".equals(request.getParameter("whichResume")))
-    {
-      resume = resumeManager.saveResume(jobseeker, newResumeFileName);
-
-      if (resume != null && "yes".equals(request.getParameter("makeResumeActive")))
-      {
-        myResumeManager.saveAsActive(jobseeker, resume);
-      }
-    }
-    else
-    {
-      resume = myResumeManager.getActiveResume(jobseeker.getId());
-    }
-
-    return resume;
+    ResumeController resumeController = new ResumeController(resumeManager, myResumeManager);
+    return resumeController.saveNewOrRetrieveExistingResume(newResumeFileName, jobseeker, request);
   }
 
   private static void provideInvalidJobView(HttpResponse response, int jobId)

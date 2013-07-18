@@ -26,6 +26,7 @@ import com.theladders.solid.srp.resume.MyResumeManager;
 import com.theladders.solid.srp.resume.Resume;
 import com.theladders.solid.srp.resume.ResumeManager;
 import com.theladders.solid.srp.resume.ResumeRepository;
+import com.theladders.solid.srp.ResumeController;
 
 public class TestIt
 {
@@ -36,6 +37,7 @@ public class TestIt
   private static final int APPROVED_JOBSEEKER    = 1010;
 
   private ApplyController            controller;
+  private ResumeController           resumeController;
   private JobRepository              jobRepository;
   private ResumeRepository           resumeRepository;
   private JobApplicationRepository   jobApplicationRepository;
@@ -207,6 +209,23 @@ public class TestIt
 
     assertEquals(new Resume("Save Me Seymour"), activeResumeRepository.activeResumeFor(APPROVED_JOBSEEKER));
   }
+  
+  @Test
+  public void resumeIsMadeActiveByController()
+  {
+    Jobseeker JOBSEEKER = new Jobseeker(APPROVED_JOBSEEKER, true);
+    HttpSession session = new HttpSession(JOBSEEKER);
+
+    Map<String, String> parameters = new HashMap<>();
+    parameters.put("jobId","5");
+    parameters.put("makeResumeActive", "yes");
+
+    HttpRequest request = new HttpRequest(session, parameters);
+        
+    resumeController.saveNewOrRetrieveExistingResume("Save Me Seymour", JOBSEEKER, request);
+
+    assertEquals(new Resume("Save Me Seymour"), activeResumeRepository.activeResumeFor(APPROVED_JOBSEEKER));
+  }
 
   @Before
   public void setup()
@@ -217,6 +236,7 @@ public class TestIt
     setupActiveResumeRepository();
     setupJobApplicationRepository();
     setupController();
+    setupResumeController();
   }
 
   private void setupJobseekerProfileRepository()
@@ -299,5 +319,13 @@ public class TestIt
                                      jobApplicationSystem,
                                      resumeManager,
                                      myResumeManager);
+  }
+
+  private void setupResumeController()
+  {
+    ResumeManager resumeManager = new ResumeManager(resumeRepository);
+    MyResumeManager myResumeManager = new MyResumeManager(activeResumeRepository);
+
+    resumeController = new ResumeController(resumeManager, myResumeManager);
   }
 }

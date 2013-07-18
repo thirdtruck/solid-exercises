@@ -227,6 +227,24 @@ public class TestIt
     assertEquals(new Resume("Save Me Seymour"), activeResumeRepository.activeResumeFor(APPROVED_JOBSEEKER));
   }
 
+  @Test
+  public void resumeIsSavedByController()
+  {
+    Jobseeker JOBSEEKER = new Jobseeker(APPROVED_JOBSEEKER, true);
+    HttpSession session = new HttpSession(JOBSEEKER);
+
+    Map<String, String> parameters = new HashMap<>();
+    parameters.put("jobId","5");
+
+    HttpRequest request = new HttpRequest(session, parameters);
+
+    HttpResponse response = new HttpResponse();
+    
+    resumeController.saveNewOrRetrieveExistingResume(SHARED_RESUME_NAME, JOBSEEKER, request);
+
+    assertTrue(resumeRepository.contains(new Resume(SHARED_RESUME_NAME)));
+  }
+
   @Before
   public void setup()
   {

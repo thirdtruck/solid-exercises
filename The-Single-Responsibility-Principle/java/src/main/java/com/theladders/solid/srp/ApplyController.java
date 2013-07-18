@@ -17,29 +17,25 @@ import com.theladders.solid.srp.jobseeker.JobseekerProfile;
 import com.theladders.solid.srp.jobseeker.JobseekerProfileManager;
 import com.theladders.solid.srp.jobseeker.ProfileStatus;
 import com.theladders.solid.srp.jobseeker.Jobseeker;
-import com.theladders.solid.srp.resume.MyResumeManager;
 import com.theladders.solid.srp.resume.Resume;
-import com.theladders.solid.srp.resume.ResumeManager;
+import com.theladders.solid.srp.ResumeController;
 
 public class ApplyController
 {
   private final JobseekerProfileManager jobseekerProfileManager;
   private final JobSearchService        jobSearchService;
   private final JobApplicationSystem    jobApplicationSystem;
-  private final ResumeManager           resumeManager;
-  private final MyResumeManager         myResumeManager;
+  private final ResumeController        resumeController;
 
   public ApplyController(JobseekerProfileManager jobseekerProfileManager,
                          JobSearchService jobSearchService,
                          JobApplicationSystem jobApplicationSystem,
-                         ResumeManager resumeManager,
-                         MyResumeManager myResumeManager)
+                         ResumeController resumeController)
   {
     this.jobseekerProfileManager = jobseekerProfileManager;
     this.jobSearchService = jobSearchService;
     this.jobApplicationSystem = jobApplicationSystem;
-    this.resumeManager = resumeManager;
-    this.myResumeManager = myResumeManager;
+    this.resumeController = resumeController;
   }
 
   public HttpResponse handle(HttpRequest request,
@@ -128,7 +124,6 @@ public class ApplyController
                                                  Jobseeker jobseeker,
                                                  HttpRequest request)
   {
-    ResumeController resumeController = new ResumeController(resumeManager, myResumeManager);
     return resumeController.saveNewOrRetrieveExistingResume(newResumeFileName, jobseeker, request);
   }
 

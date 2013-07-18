@@ -251,8 +251,8 @@ public class TestIt
     setupResumeRepository();
     setupActiveResumeRepository();
     setupJobApplicationRepository();
-    setupController();
     setupResumeController();
+    setupController();
   }
 
   private void setupJobseekerProfileRepository()
@@ -327,14 +327,11 @@ public class TestIt
     JobseekerProfileManager jobseekerProfileManager = new JobseekerProfileManager(jobseekerProfileRepository);
     JobSearchService jobSearchService = new JobSearchService(jobRepository);
     JobApplicationSystem jobApplicationSystem = new JobApplicationSystem(jobApplicationRepository);
-    ResumeManager resumeManager = new ResumeManager(resumeRepository);
-    MyResumeManager myResumeManager = new MyResumeManager(activeResumeRepository);
 
     controller = new ApplyController(jobseekerProfileManager,
                                      jobSearchService,
                                      jobApplicationSystem,
-                                     resumeManager,
-                                     myResumeManager);
+                                     resumeController);
   }
 
   private void setupResumeController()

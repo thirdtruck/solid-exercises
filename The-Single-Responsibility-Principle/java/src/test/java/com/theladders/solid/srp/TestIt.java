@@ -237,8 +237,6 @@ public class TestIt
     parameters.put("jobId","5");
 
     HttpRequest request = new HttpRequest(session, parameters);
-
-    HttpResponse response = new HttpResponse();
     
     resumeController.saveNewOrRetrieveExistingResume(SHARED_RESUME_NAME, JOBSEEKER, request);
 

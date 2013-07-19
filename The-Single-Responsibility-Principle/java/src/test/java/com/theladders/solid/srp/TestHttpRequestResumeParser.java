@@ -35,6 +35,13 @@ public class TestHttpRequestResumeParser
     ResumeRequest resumeRequest = new ResumeRequest(false, false);
   }
   
+  @test
+  public void asksForExistingResume()
+  {
+    ResumeRequest resumeRequest = new ResumeRequest(true, false);
+    assertTrue(resumeRequest.isExisting());
+  }
+  
   @Ignore
   @Test
   public void extractsResumeRequest()

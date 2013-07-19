@@ -4,10 +4,12 @@ public class ResumeRequest
 {
 
   private boolean existing;
+  private boolean makeActive;
 
   public ResumeRequest(boolean existing, boolean makeActive)
   {
     this.existing = existing;
+    this.makeActive = makeActive;
   }
   
   public boolean isExisting()
@@ -17,7 +19,7 @@ public class ResumeRequest
   
   public boolean makeActive()
   {
-    return true;
+    return makeActive;
   }
 
 }

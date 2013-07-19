@@ -31,6 +31,21 @@ public class TestJobApplier
                                         fileName);
   }
   
+  @Test
+  public void canApply()
+  {
+    String fileName = "Blammo";
+    Jobseeker jobseeker = new Jobseeker(JOBSEEKER_WITH_RESUME, true);
+    Job job = new Job(15);
+    ResumeRequest resumeRequest = new ResumeRequest(false, false);
+    
+    JobApplier applier = new JobApplier(resumeRequest,
+                                        jobseeker,
+                                        job,
+                                        fileName);
+    applier.apply();
+  }
+  
   @Before
   public void setup()
   {

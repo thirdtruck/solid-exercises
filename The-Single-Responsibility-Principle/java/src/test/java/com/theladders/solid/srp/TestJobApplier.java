@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 import com.theladders.solid.srp.job.Job;
+import com.theladders.solid.srp.job.application.JobApplicationResult;
 import com.theladders.solid.srp.jobseeker.Jobseeker;
 
 public class TestJobApplier
@@ -24,6 +25,23 @@ public class TestJobApplier
                                         job,
                                         fileName);
     applier.apply();
+  }
+  
+  @Test
+  public void canApplySuccessfully()
+  {
+    String fileName = "Blammo";
+    Jobseeker jobseeker = new Jobseeker(JOBSEEKER_WITH_RESUME, true);
+    Job job = new Job(15);
+    ResumeRequest resumeRequest = new ResumeRequest(false, false);
+    
+    JobApplier applier = new JobApplier(resumeRequest,
+                                        jobseeker,
+                                        job,
+                                        fileName);
+    
+    JobApplicationResult status = applier.apply();
+    assertFalse(status.failure());
   }
   
   @Before

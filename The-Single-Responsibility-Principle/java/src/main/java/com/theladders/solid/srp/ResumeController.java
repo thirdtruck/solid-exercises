@@ -1,6 +1,5 @@
 package com.theladders.solid.srp;
 
-import com.theladders.solid.srp.http.HttpRequest;
 import com.theladders.solid.srp.jobseeker.Jobseeker;
 import com.theladders.solid.srp.resume.MyResumeManager;
 import com.theladders.solid.srp.resume.Resume;
@@ -18,15 +17,15 @@ public class ResumeController {
 
   public Resume saveNewOrRetrieveExistingResume(String newResumeFileName,
       Jobseeker jobseeker,
-      HttpRequest request)
+      ResumeRequest resumeRequest)
   {
     Resume resume;
 
-    if (!"existing".equals(request.getParameter("whichResume")))
+    if (!resumeRequest.isExisting())
     {
       resume = resumeManager.saveResume(jobseeker, newResumeFileName);
 
-      if (resume != null && "yes".equals(request.getParameter("makeResumeActive")))
+      if (resume != null && resumeRequest.makeActive())
       {
         myResumeManager.saveAsActive(jobseeker, resume);
       }

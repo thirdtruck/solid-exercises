@@ -221,8 +221,10 @@ public class TestIt
     parameters.put("makeResumeActive", "yes");
 
     HttpRequest request = new HttpRequest(session, parameters);
+    
+    ResumeRequest resumeRequest = new HttpRequestResumeParser(request).parse();
         
-    resumeController.saveNewOrRetrieveExistingResume("Save Me Seymour", JOBSEEKER, request);
+    resumeController.saveNewOrRetrieveExistingResume("Save Me Seymour", JOBSEEKER, resumeRequest);
 
     assertEquals(new Resume("Save Me Seymour"), activeResumeRepository.activeResumeFor(APPROVED_JOBSEEKER));
   }
@@ -238,7 +240,9 @@ public class TestIt
 
     HttpRequest request = new HttpRequest(session, parameters);
     
-    resumeController.saveNewOrRetrieveExistingResume(SHARED_RESUME_NAME, JOBSEEKER, request);
+    ResumeRequest resumeRequest = new HttpRequestResumeParser(request).parse();
+    
+    resumeController.saveNewOrRetrieveExistingResume(SHARED_RESUME_NAME, JOBSEEKER, resumeRequest);
 
     assertTrue(resumeRepository.contains(new Resume(SHARED_RESUME_NAME)));
   }

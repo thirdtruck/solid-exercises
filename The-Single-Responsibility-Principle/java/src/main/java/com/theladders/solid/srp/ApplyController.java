@@ -124,7 +124,9 @@ public class ApplyController
                                                  Jobseeker jobseeker,
                                                  HttpRequest request)
   {
-    return resumeController.saveNewOrRetrieveExistingResume(newResumeFileName, jobseeker, request);
+    ResumeRequest resumeRequest = new HttpRequestResumeParser(request).parse();
+    
+    return resumeController.saveNewOrRetrieveExistingResume(newResumeFileName, jobseeker, resumeRequest);
   }
 
   private static void provideInvalidJobView(HttpResponse response, int jobId)

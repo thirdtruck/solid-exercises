@@ -29,6 +29,7 @@ public class TestHttpRequestResumeParser
     HttpRequestResumeParser parser = new HttpRequestResumeParser(request);
   }
   
+  @Ignore
   @Test
   public void extractsResumeRequest()
   {

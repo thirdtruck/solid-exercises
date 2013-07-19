@@ -242,7 +242,7 @@ public class TestIt
 
     assertTrue(resumeRepository.contains(new Resume(SHARED_RESUME_NAME)));
   }
-
+  
   @Before
   public void setup()
   {

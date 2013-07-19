@@ -56,6 +56,13 @@ public class TestHttpRequestResumeParser
     assertTrue(resumeRequest.makeActive());
   }
   
+  @Test
+  public void asksToNotMakeResumeActive()
+  {
+    ResumeRequest resumeRequest = new ResumeRequest(false, false);
+    assertFalse(resumeRequest.makeActive());
+  }
+  
   @Ignore
   @Test
   public void extractsResumeRequest()

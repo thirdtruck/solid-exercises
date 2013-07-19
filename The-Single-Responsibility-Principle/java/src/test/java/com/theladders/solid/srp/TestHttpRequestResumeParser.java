@@ -35,7 +35,7 @@ public class TestHttpRequestResumeParser
     ResumeRequest resumeRequest = new ResumeRequest(false, false);
   }
   
-  @test
+  @Test
   public void asksForExistingResume()
   {
     ResumeRequest resumeRequest = new ResumeRequest(true, false);

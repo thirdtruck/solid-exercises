@@ -110,7 +110,8 @@ public class ApplyController
                      Job job,
                      String fileName)
   {
-    Resume resume = saveNewOrRetrieveExistingResume(fileName,jobseeker, request);
+    ResumeRequest resumeRequest = new HttpRequestResumeParser(request).parse();
+    Resume resume = resumeController.saveNewOrRetrieveExistingResume(fileName, jobseeker, resumeRequest);
     UnprocessedApplication application = new UnprocessedApplication(jobseeker, job, resume);
     JobApplicationResult applicationResult = jobApplicationSystem.apply(application);
 
@@ -118,15 +119,6 @@ public class ApplyController
     {
       throw new ApplicationFailureException(applicationResult.toString());
     }
-  }
-
-  private Resume saveNewOrRetrieveExistingResume(String newResumeFileName,
-                                                 Jobseeker jobseeker,
-                                                 HttpRequest request)
-  {
-    ResumeRequest resumeRequest = new HttpRequestResumeParser(request).parse();
-    
-    return resumeController.saveNewOrRetrieveExistingResume(newResumeFileName, jobseeker, resumeRequest);
   }
 
   private static void provideInvalidJobView(HttpResponse response, int jobId)

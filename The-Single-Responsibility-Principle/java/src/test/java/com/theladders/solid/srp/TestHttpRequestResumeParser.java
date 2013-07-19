@@ -17,11 +17,15 @@ public class TestHttpRequestResumeParser
 
   private Jobseeker jobseeker;
   private HttpSession session;
-  private HttpRequest request;
 
   @Test
   public void canCreateHttpRequestResumeParser()
   {
+    Map<String, String> parameters = new HashMap<>();
+    parameters.put("jobId","5");
+    
+    HttpRequest request = new HttpRequest(session, parameters);
+    
     HttpRequestResumeParser parser = new HttpRequestResumeParser(request);
   }
 
@@ -30,10 +34,5 @@ public class TestHttpRequestResumeParser
   {
     jobseeker = new Jobseeker(APPROVED_JOBSEEKER, true);
     session = new HttpSession(jobseeker);
-
-    Map<String, String> parameters = new HashMap<>();
-    parameters.put("jobId","5");
-
-    request = new HttpRequest(session, parameters);
   }
 }

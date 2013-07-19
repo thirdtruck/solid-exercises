@@ -84,6 +84,19 @@ public class TestHttpRequestResumeParser
   }
   
   @Test
+  public void requestingNonExistingResumeByDefault()
+  {
+    Map<String, String> parameters = new HashMap<>();
+    parameters.put("jobId","5");
+    
+    HttpRequest httpRequest = new HttpRequest(session, parameters);
+    
+    HttpRequestResumeParser parser = new HttpRequestResumeParser(httpRequest);
+    ResumeRequest resumeRequest = parser.parse(); 
+    assertFalse(resumeRequest.isExisting());
+  }
+  
+  @Test
   public void requestingResumeBeMadeActive()
   {
     Map<String, String> parameters = new HashMap<>();

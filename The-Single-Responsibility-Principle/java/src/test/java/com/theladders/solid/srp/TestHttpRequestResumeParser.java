@@ -69,7 +69,6 @@ public class TestHttpRequestResumeParser
     ResumeRequest resumeRequest = parser.parse();
   }
   
-  @Ignore
   @Test
   public void requestingExistingResume()
   {
@@ -81,7 +80,7 @@ public class TestHttpRequestResumeParser
     
     HttpRequestResumeParser parser = new HttpRequestResumeParser(httpRequest);
     ResumeRequest resumeRequest = parser.parse(); 
-    assertTrue(request.forExistingResume());
+    assertTrue(resumeRequest.isExisting());
   }
 
   @Before

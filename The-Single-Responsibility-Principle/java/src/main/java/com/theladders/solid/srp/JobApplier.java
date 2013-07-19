@@ -12,23 +12,15 @@ public class JobApplier {
 
   private JobApplicationSystem jobApplicationSystem;
   private ResumeController resumeController;
-  private Jobseeker jobseeker;
-  private Job job;
-  private String fileName;
-  private ResumeRequest resumeRequest;
 
-  public JobApplier(ResumeController resumeController, ResumeRequest resumeRequest, Jobseeker jobseeker, Job job,
-      String fileName) {
+  public JobApplier(ResumeController resumeController) {
     JobApplicationRepository jobApplicationRepository = new JobApplicationRepository();
     jobApplicationSystem = new JobApplicationSystem(jobApplicationRepository);
     this.resumeController = resumeController;
-    this.resumeRequest = resumeRequest;
-    this.jobseeker = jobseeker;
-    this.job = job;
-    this.fileName = fileName;
   }
 
-  public boolean apply()
+  public boolean apply(ResumeRequest resumeRequest, Jobseeker jobseeker, Job job,
+      String fileName)
   {
     try
     {

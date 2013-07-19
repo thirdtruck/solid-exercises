@@ -27,12 +27,11 @@ public class TestJobApplier
     Job job = new Job(15);
     ResumeRequest resumeRequest = new ResumeRequest(false, false);
     
-    JobApplier applier = new JobApplier(resumeController,
-                                        resumeRequest,
-                                        jobseeker,
-                                        job,
-                                        fileName);
-    applier.apply();
+    JobApplier applier = new JobApplier(resumeController);
+    applier.apply(resumeRequest,
+                  jobseeker,
+                  job,
+                  fileName);
   }
   
   @Test
@@ -43,13 +42,12 @@ public class TestJobApplier
     Job job = new Job(15);
     ResumeRequest resumeRequest = new ResumeRequest(false, false);
     
-    JobApplier applier = new JobApplier(resumeController,
-                                        resumeRequest,
-                                        jobseeker,
-                                        job,
-                                        fileName);
+    JobApplier applier = new JobApplier(resumeController);
     
-    boolean success = applier.apply();
+    boolean success = applier.apply(resumeRequest,
+                                    jobseeker,
+                                    job,
+                                    fileName);
     assertTrue(success);
   }
   
@@ -61,13 +59,12 @@ public class TestJobApplier
     Job job = new Job(5);
     ResumeRequest resumeRequest = new ResumeRequest(false, false);
     
-    JobApplier applier = new JobApplier(resumeController,
-                                        resumeRequest,
-                                        jobseeker,
-                                        job,
-                                        fileName);
+    JobApplier applier = new JobApplier(resumeController);
 
-    boolean success = applier.apply();
+    boolean success = applier.apply(resumeRequest,
+                                    jobseeker,
+                                    job,
+                                    fileName);
     assertFalse(success);
   }
   

@@ -16,21 +16,6 @@ public class TestJobApplier
 {
   private static final int JOBSEEKER_WITH_RESUME = 777;
   
-  // Absorb functionality of ApplyController#apply
-  @Test
-  public void canInitializeJobApplier()
-  {
-    String fileName = "Blammo";
-    Jobseeker jobseeker = new Jobseeker(JOBSEEKER_WITH_RESUME, true);
-    Job job = new Job(15);
-    ResumeRequest resumeRequest = new ResumeRequest(false, false);
-
-    JobApplier applier = new JobApplier(resumeRequest,
-                                        jobseeker,
-                                        job,
-                                        fileName);
-  }
-  
   @Test
   public void canApply()
   {

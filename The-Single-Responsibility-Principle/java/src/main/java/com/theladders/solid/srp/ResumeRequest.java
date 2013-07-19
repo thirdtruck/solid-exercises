@@ -14,5 +14,10 @@ public class ResumeRequest
   {
     return existing;
   }
+  
+  public boolean makeActive()
+  {
+    return true;
+  }
 
 }

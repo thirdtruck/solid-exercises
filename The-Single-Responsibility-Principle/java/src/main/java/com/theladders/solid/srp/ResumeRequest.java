@@ -3,13 +3,16 @@ package com.theladders.solid.srp;
 public class ResumeRequest
 {
 
-  public ResumeRequest(boolean existingResume, boolean makeActive)
+  private boolean existing;
+
+  public ResumeRequest(boolean existing, boolean makeActive)
   {
+    this.existing = existing;
   }
   
   public boolean isExisting()
   {
-    return true;
+    return existing;
   }
 
 }

@@ -28,6 +28,12 @@ public class TestHttpRequestResumeParser
     
     HttpRequestResumeParser parser = new HttpRequestResumeParser(request);
   }
+
+  @Test
+  public void canCreateResumeRequest()
+  {
+    ResumeRequest resumeRequest = new ResumeRequest(false, false);
+  }
   
   @Ignore
   @Test

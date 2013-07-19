@@ -10,7 +10,7 @@ public class HttpRequestResumeParser
   }
 
   public ResumeRequest parse() {
-    return new ResumeRequest(true, false);
+    return new ResumeRequest(true, true);
   }
 
 }

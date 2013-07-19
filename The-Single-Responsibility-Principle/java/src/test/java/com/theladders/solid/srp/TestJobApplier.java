@@ -43,12 +43,12 @@ public class TestJobApplier
     ResumeRequest resumeRequest = new ResumeRequest(false, false);
     
     JobApplier applier = new JobApplier(resumeController);
-    
-    boolean success = applier.apply(resumeRequest,
-                                    jobseeker,
-                                    job,
-                                    fileName);
-    assertTrue(success);
+
+    JobApplierResult result = applier.apply(resumeRequest,
+                                            jobseeker,
+                                            job,
+                                            fileName);
+    assertTrue(result.wasSuccessful());
   }
   
   @Test
@@ -61,11 +61,11 @@ public class TestJobApplier
     
     JobApplier applier = new JobApplier(resumeController);
 
-    boolean success = applier.apply(resumeRequest,
-                                    jobseeker,
-                                    job,
-                                    fileName);
-    assertFalse(success);
+    JobApplierResult result = applier.apply(resumeRequest,
+                                            jobseeker,
+                                            job,
+                                            fileName);
+    assertFalse(result.wasSuccessful());
   }
   
   @Before

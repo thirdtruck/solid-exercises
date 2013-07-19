@@ -82,6 +82,20 @@ public class TestHttpRequestResumeParser
     ResumeRequest resumeRequest = parser.parse(); 
     assertTrue(resumeRequest.isExisting());
   }
+  
+  @Test
+  public void requestingResumeBeMadeActive()
+  {
+    Map<String, String> parameters = new HashMap<>();
+    parameters.put("jobId","5");
+    parameters.put("makeResumeActive", "yes");
+    
+    HttpRequest httpRequest = new HttpRequest(session, parameters);
+    
+    HttpRequestResumeParser parser = new HttpRequestResumeParser(httpRequest);
+    ResumeRequest resumeRequest = parser.parse(); 
+    assertTrue(resumeRequest.makeActive());
+  }
 
   @Before
   public void setup()

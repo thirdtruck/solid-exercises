@@ -9,7 +9,7 @@ import com.theladders.solid.srp.jobseeker.Jobseeker;
 import com.theladders.solid.srp.resume.Resume;
 
 public class JobApplier {
-  
+
   private JobApplicationSystem jobApplicationSystem;
   private ResumeController resumeController;
   private Jobseeker jobseeker;
@@ -27,12 +27,20 @@ public class JobApplier {
     this.job = job;
     this.fileName = fileName;
   }
-  
-  public JobApplicationResult apply()
+
+  public boolean apply()
   {
-    Resume resume = resumeController.saveNewOrRetrieveExistingResume(fileName, jobseeker, resumeRequest);
-    UnprocessedApplication application = new UnprocessedApplication(jobseeker, job, resume);
-    return jobApplicationSystem.apply(application);
+    try
+    {
+      Resume resume = resumeController.saveNewOrRetrieveExistingResume(fileName, jobseeker, resumeRequest);
+      UnprocessedApplication application = new UnprocessedApplication(jobseeker, job, resume);
+      JobApplicationResult jobApplicationResult = jobApplicationSystem.apply(application);
+      return ! jobApplicationResult.failure();
+    }
+    catch (Exception e)
+    {
+      return false;
+    }
   }
 
 }

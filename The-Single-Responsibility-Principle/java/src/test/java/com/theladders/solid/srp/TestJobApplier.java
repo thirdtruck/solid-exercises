@@ -5,7 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 import com.theladders.solid.srp.job.Job;
-import com.theladders.solid.srp.job.application.JobApplicationResult;
 import com.theladders.solid.srp.jobseeker.Jobseeker;
 import com.theladders.solid.srp.resume.ActiveResumeRepository;
 import com.theladders.solid.srp.resume.MyResumeManager;
@@ -16,6 +15,7 @@ import com.theladders.solid.srp.resume.ResumeRepository;
 public class TestJobApplier
 {
   private static final int JOBSEEKER_WITH_RESUME = 777;
+  private static final int APPROVED_JOBSEEKER    = 1010;
   
   private ResumeController resumeController;
   
@@ -49,8 +49,26 @@ public class TestJobApplier
                                         job,
                                         fileName);
     
-    JobApplicationResult status = applier.apply();
-    assertFalse(status.failure());
+    boolean success = applier.apply();
+    assertTrue(success);
+  }
+  
+  @Test
+  public void canApplyUnsuccessfully()
+  {
+    String fileName = null;
+    Jobseeker jobseeker = new Jobseeker(APPROVED_JOBSEEKER, true);
+    Job job = new Job(5);
+    ResumeRequest resumeRequest = new ResumeRequest(false, false);
+    
+    JobApplier applier = new JobApplier(resumeController,
+                                        resumeRequest,
+                                        jobseeker,
+                                        job,
+                                        fileName);
+
+    boolean success = applier.apply();
+    assertFalse(success);
   }
   
   @Before

@@ -5,12 +5,18 @@ import com.theladders.solid.srp.http.HttpRequest;
 public class HttpRequestResumeParser
 {
 
-  public HttpRequestResumeParser(HttpRequest request)
+  private HttpRequest httpRequest;
+
+  public HttpRequestResumeParser(HttpRequest httpRequest)
   {
+    this.httpRequest = httpRequest;
   }
 
   public ResumeRequest parse() {
-    return new ResumeRequest(true, true);
+    boolean existing = "existing".equals(httpRequest.getParameter("whichResume"));
+    boolean makeActive = "yes".equals(httpRequest.getParameter("makeResumeActive"));
+    ResumeRequest resumeRequest = new ResumeRequest(existing, makeActive);
+    return resumeRequest;
   }
 
 }

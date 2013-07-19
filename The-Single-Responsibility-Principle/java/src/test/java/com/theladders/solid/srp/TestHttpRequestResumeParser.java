@@ -57,7 +57,6 @@ public class TestHttpRequestResumeParser
     assertFalse(resumeRequest.makeActive());
   }
   
-  @Ignore
   @Test
   public void extractsResumeRequest()
   {
@@ -67,7 +66,7 @@ public class TestHttpRequestResumeParser
     HttpRequest httpRequest = new HttpRequest(session, parameters);
     
     HttpRequestResumeParser parser = new HttpRequestResumeParser(httpRequest);
-    ResumeRequest resumeRequest = parser.parse(); 
+    ResumeRequest resumeRequest = parser.parse();
   }
   
   @Ignore

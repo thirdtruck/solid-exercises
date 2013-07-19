@@ -60,9 +60,11 @@ public class ApplyController
 
     List<String> errList = new ArrayList<>();
 
+    ResumeRequest resumeRequest = new HttpRequestResumeParser(request).parse();
+    
     try
     {
-      apply(request, jobseeker, job, origFileName);
+      apply(resumeRequest, jobseeker, job, origFileName);
     }
     catch (Exception e)
     {
@@ -105,12 +107,11 @@ public class ApplyController
    response.setResult(result);
   }
 
-  private void apply(HttpRequest request,
+  private void apply(ResumeRequest resumeRequest,
                      Jobseeker jobseeker,
                      Job job,
                      String fileName)
   {
-    ResumeRequest resumeRequest = new HttpRequestResumeParser(request).parse();
     Resume resume = resumeController.saveNewOrRetrieveExistingResume(fileName, jobseeker, resumeRequest);
     UnprocessedApplication application = new UnprocessedApplication(jobseeker, job, resume);
     JobApplicationResult applicationResult = jobApplicationSystem.apply(application);

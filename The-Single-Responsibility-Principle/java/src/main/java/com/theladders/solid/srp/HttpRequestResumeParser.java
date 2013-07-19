@@ -9,4 +9,9 @@ public class HttpRequestResumeParser
   {
   }
 
+  public ResumeRequest parse() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
 }

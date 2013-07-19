@@ -58,18 +58,6 @@ public class TestHttpRequestResumeParser
   }
   
   @Test
-  public void extractsResumeRequest()
-  {
-    Map<String, String> parameters = new HashMap<>();
-    parameters.put("jobId","5");
-    
-    HttpRequest httpRequest = new HttpRequest(session, parameters);
-    
-    HttpRequestResumeParser parser = new HttpRequestResumeParser(httpRequest);
-    ResumeRequest resumeRequest = parser.parse();
-  }
-  
-  @Test
   public void requestingExistingResume()
   {
     Map<String, String> parameters = new HashMap<>();

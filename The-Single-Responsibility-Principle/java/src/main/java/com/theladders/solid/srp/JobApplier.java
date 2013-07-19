@@ -19,7 +19,7 @@ public class JobApplier {
     this.resumeController = resumeController;
   }
 
-  public boolean apply(ResumeRequest resumeRequest, Jobseeker jobseeker, Job job,
+  public JobApplierResult apply(ResumeRequest resumeRequest, Jobseeker jobseeker, Job job,
       String fileName)
   {
     try
@@ -27,11 +27,11 @@ public class JobApplier {
       Resume resume = resumeController.saveNewOrRetrieveExistingResume(fileName, jobseeker, resumeRequest);
       UnprocessedApplication application = new UnprocessedApplication(jobseeker, job, resume);
       JobApplicationResult jobApplicationResult = jobApplicationSystem.apply(application);
-      return ! jobApplicationResult.failure();
+      return new JobApplierResult(! jobApplicationResult.failure(), jobApplicationResult.toString());
     }
     catch (Exception e)
     {
-      return false;
+      return new JobApplierResult(false, e.toString());
     }
   }
 

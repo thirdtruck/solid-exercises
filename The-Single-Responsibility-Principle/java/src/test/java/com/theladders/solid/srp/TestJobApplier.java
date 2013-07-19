@@ -6,11 +6,6 @@ import org.junit.*;
 
 import com.theladders.solid.srp.job.Job;
 import com.theladders.solid.srp.jobseeker.Jobseeker;
-import com.theladders.solid.srp.resume.ActiveResumeRepository;
-import com.theladders.solid.srp.resume.MyResumeManager;
-import com.theladders.solid.srp.resume.Resume;
-import com.theladders.solid.srp.resume.ResumeManager;
-import com.theladders.solid.srp.resume.ResumeRepository;
 
 public class TestJobApplier
 {

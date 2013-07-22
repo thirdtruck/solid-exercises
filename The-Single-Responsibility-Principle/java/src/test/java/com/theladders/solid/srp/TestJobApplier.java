@@ -68,6 +68,29 @@ public class TestJobApplier
     assertFalse(result.wasSuccessful());
   }
   
+  @Test
+  public void cannotApplyToTheSameJobTwice()
+  {
+    String fileName = "Blammo";
+    Jobseeker jobseeker = new Jobseeker(JOBSEEKER_WITH_RESUME, true);
+    Job job = new Job(15);
+    ResumeRequest resumeRequest = new ResumeRequest(false, false);
+    
+    JobApplier applier = new JobApplier(resumeController);
+
+    JobApplierResult result1 = applier.apply(resumeRequest,
+                                            jobseeker,
+                                            job,
+                                            fileName);
+    assertTrue(result1.wasSuccessful());
+
+    JobApplierResult result2 = applier.apply(resumeRequest,
+                                            jobseeker,
+                                            job,
+                                            fileName);
+    assertFalse(result2.wasSuccessful());
+  }
+  
   @Before
   public void setup()
   {

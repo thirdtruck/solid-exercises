@@ -53,8 +53,9 @@ public class ApplyController
 
     ResumeRequest resumeRequest = new HttpRequestResumeParser(request).parse();
     
-    JobApplierResult result = apply(resumeRequest, jobseeker, job, origFileName);
-    if(! result.wasSuccessful())
+    JobApplierResult jobApplierResult = jobApplier.apply(resumeRequest, jobseeker, job, origFileName);
+    
+    if(! jobApplierResult.wasSuccessful())
     {
       errList.add("We could not process your application.");
       provideErrorView(response, errList, model);
@@ -93,15 +94,6 @@ public class ApplyController
   {
    Result result = new Result("error", model, errList);
    response.setResult(result);
-  }
-
-  private JobApplierResult apply(ResumeRequest resumeRequest,
-                     Jobseeker jobseeker,
-                     Job job,
-                     String fileName)
-  {
-    JobApplierResult jobApplierResult = jobApplier.apply(resumeRequest, jobseeker, job, fileName);
-    return jobApplierResult;
   }
 
   private static void provideInvalidJobView(HttpResponse response, int jobId)

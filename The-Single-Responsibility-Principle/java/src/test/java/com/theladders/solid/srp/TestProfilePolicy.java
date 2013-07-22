@@ -43,5 +43,13 @@ public class TestProfilePolicy
         
     assertTrue(policy.isProfileAcceptable(ProfileStatus.NO_PROFILE));
   }
+  
+  @Test
+  public void isProfileAcceptable_Removed()
+  {
+    ProfilePolicy policy = new ProfilePolicy();
+        
+    assertTrue(policy.isProfileAcceptable(ProfileStatus.REMOVED));
+  }
 
 }

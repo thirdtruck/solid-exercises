@@ -13,8 +13,7 @@ public class JobApplier {
   private JobApplicationSystem jobApplicationSystem;
   private ResumeController resumeController;
 
-  public JobApplier(ResumeController resumeController) {
-    JobApplicationRepository jobApplicationRepository = new JobApplicationRepository();
+  public JobApplier(ResumeController resumeController, JobApplicationRepository jobApplicationRepository) {
     jobApplicationSystem = new JobApplicationSystem(jobApplicationRepository);
     this.resumeController = resumeController;
   }

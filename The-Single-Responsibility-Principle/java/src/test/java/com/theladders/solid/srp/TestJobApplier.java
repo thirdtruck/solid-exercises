@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.*;
 
 import com.theladders.solid.srp.job.Job;
+import com.theladders.solid.srp.job.application.JobApplicationRepository;
 import com.theladders.solid.srp.jobseeker.Jobseeker;
 import com.theladders.solid.srp.resume.ActiveResumeRepository;
 import com.theladders.solid.srp.resume.MyResumeManager;
@@ -18,6 +19,7 @@ public class TestJobApplier
   private static final int APPROVED_JOBSEEKER    = 1010;
   
   private ResumeController resumeController;
+  private JobApplicationRepository jobApplicationRepository;
   
   @Test
   public void canApply()
@@ -27,7 +29,7 @@ public class TestJobApplier
     Job job = new Job(15);
     ResumeRequest resumeRequest = new ResumeRequest(false, false);
     
-    JobApplier applier = new JobApplier(resumeController);
+    JobApplier applier = new JobApplier(resumeController, jobApplicationRepository);
     applier.apply(resumeRequest,
                   jobseeker,
                   job,
@@ -42,7 +44,7 @@ public class TestJobApplier
     Job job = new Job(15);
     ResumeRequest resumeRequest = new ResumeRequest(false, false);
     
-    JobApplier applier = new JobApplier(resumeController);
+    JobApplier applier = new JobApplier(resumeController, jobApplicationRepository);
 
     JobApplierResult result = applier.apply(resumeRequest,
                                             jobseeker,
@@ -59,7 +61,7 @@ public class TestJobApplier
     Job job = new Job(5);
     ResumeRequest resumeRequest = new ResumeRequest(false, false);
     
-    JobApplier applier = new JobApplier(resumeController);
+    JobApplier applier = new JobApplier(resumeController, jobApplicationRepository);
 
     JobApplierResult result = applier.apply(resumeRequest,
                                             jobseeker,
@@ -76,7 +78,7 @@ public class TestJobApplier
     Job job = new Job(15);
     ResumeRequest resumeRequest = new ResumeRequest(false, false);
     
-    JobApplier applier = new JobApplier(resumeController);
+    JobApplier applier = new JobApplier(resumeController, jobApplicationRepository);
 
     JobApplierResult result1 = applier.apply(resumeRequest,
                                             jobseeker,
@@ -103,6 +105,8 @@ public class TestJobApplier
     MyResumeManager myResumeManager = new MyResumeManager(activeResumeRepository);
 
     resumeController = new ResumeController(resumeManager, myResumeManager);
+    
+    jobApplicationRepository = new JobApplicationRepository();
   }
   
 }

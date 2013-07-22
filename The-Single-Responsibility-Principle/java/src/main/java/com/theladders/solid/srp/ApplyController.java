@@ -11,7 +11,6 @@ import com.theladders.solid.srp.job.Job;
 import com.theladders.solid.srp.job.JobSearchService;
 import com.theladders.solid.srp.jobseeker.JobseekerProfile;
 import com.theladders.solid.srp.jobseeker.JobseekerProfileManager;
-import com.theladders.solid.srp.jobseeker.ProfileStatus;
 import com.theladders.solid.srp.jobseeker.Jobseeker;
 
 public class ApplyController
@@ -68,7 +67,7 @@ public class ApplyController
     model.put("jobTitle", job.getTitle());
 
     
-    if (!jobseeker.isPremium() && ! profilePolicy.isProfileAcceptable(profile))
+    if (!jobseeker.isPremium() && profilePolicy.isProfileUnacceptable(profile))
     {
       provideResumeCompletionView(response, model);
       return response;

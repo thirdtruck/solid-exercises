@@ -37,11 +37,11 @@ public class TestProfilePolicy
   }
   
   @Test
-  public void isResumeIncomplete_Incomplete()
+  public void isProfileAcceptable_NoProfile()
   {
     ProfilePolicy policy = new ProfilePolicy();
         
-    assertTrue(policy.isProfileAcceptable(ProfileStatus.INCOMPLETE));
+    assertTrue(policy.isProfileAcceptable(ProfileStatus.NO_PROFILE));
   }
 
 }

@@ -33,7 +33,7 @@ public class TestProfilePolicy
   {
     ProfilePolicy policy = new ProfilePolicy();
         
-    assertTrue(policy.isProfileAcceptable(ProfileStatus.INCOMPLETE));
+    assertFalse(policy.isProfileAcceptable(ProfileStatus.INCOMPLETE));
   }
   
   @Test
@@ -41,7 +41,7 @@ public class TestProfilePolicy
   {
     ProfilePolicy policy = new ProfilePolicy();
         
-    assertTrue(policy.isProfileAcceptable(ProfileStatus.NO_PROFILE));
+    assertFalse(policy.isProfileAcceptable(ProfileStatus.NO_PROFILE));
   }
   
   @Test
@@ -49,7 +49,7 @@ public class TestProfilePolicy
   {
     ProfilePolicy policy = new ProfilePolicy();
         
-    assertTrue(policy.isProfileAcceptable(ProfileStatus.REMOVED));
+    assertFalse(policy.isProfileAcceptable(ProfileStatus.REMOVED));
   }
 
 }

@@ -29,6 +29,14 @@ public class TestProfilePolicy
   }
   
   @Test
+  public void isProfileAcceptable_Approved()
+  {
+    ProfilePolicy policy = new ProfilePolicy();
+        
+    assertTrue(policy.isProfileAcceptable(ProfileStatus.APPROVED));
+  }
+  
+  @Test
   public void isProfileAcceptable_Incomplete()
   {
     ProfilePolicy policy = new ProfilePolicy();

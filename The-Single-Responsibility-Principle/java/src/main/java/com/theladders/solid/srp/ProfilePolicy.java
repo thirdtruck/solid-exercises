@@ -10,7 +10,7 @@ public class ProfilePolicy
     return true;
   }
 
-  public boolean isProfileIncomplete(ProfileStatus incomplete) {
+  public boolean isProfileAcceptable(ProfileStatus incomplete) {
     return true;
   }
 

@@ -59,5 +59,37 @@ public class TestProfilePolicy
         
     assertFalse(policy.isProfileAcceptable(ProfileStatus.REMOVED));
   }
+  
+  @Test
+  public void isProfileUnacceptable_Approved()
+  {
+    ProfilePolicy policy = new ProfilePolicy();
+        
+    assertFalse(policy.isProfileUnacceptable(ProfileStatus.APPROVED));
+  }
+  
+  @Test
+  public void isProfileUnacceptable_Incomplete()
+  {
+    ProfilePolicy policy = new ProfilePolicy();
+        
+    assertTrue(policy.isProfileUnacceptable(ProfileStatus.INCOMPLETE));
+  }
+  
+  @Test
+  public void isProfileUnacceptable_NoProfile()
+  {
+    ProfilePolicy policy = new ProfilePolicy();
+        
+    assertTrue(policy.isProfileUnacceptable(ProfileStatus.NO_PROFILE));
+  }
+  
+  @Test
+  public void isProfileUnacceptable_Removed()
+  {
+    ProfilePolicy policy = new ProfilePolicy();
+        
+    assertTrue(policy.isProfileUnacceptable(ProfileStatus.REMOVED));
+  }
 
 }

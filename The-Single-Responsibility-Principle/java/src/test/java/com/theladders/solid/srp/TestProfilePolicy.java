@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.theladders.solid.srp.jobseeker.Jobseeker;
+import com.theladders.solid.srp.jobseeker.JobseekerProfile;
 import com.theladders.solid.srp.jobseeker.ProfileStatus;
 
 public class TestProfilePolicy
@@ -32,64 +33,80 @@ public class TestProfilePolicy
   public void isProfileAcceptable_Approved()
   {
     ProfilePolicy policy = new ProfilePolicy();
+    
+    JobseekerProfile profile = new JobseekerProfile(APPROVED_JOBSEEKER, ProfileStatus.APPROVED);
         
-    assertTrue(policy.isProfileAcceptable(ProfileStatus.APPROVED));
+    assertTrue(policy.isProfileAcceptable(profile));
   }
   
   @Test
   public void isProfileAcceptable_Incomplete()
   {
     ProfilePolicy policy = new ProfilePolicy();
+    
+    JobseekerProfile profile = new JobseekerProfile(APPROVED_JOBSEEKER, ProfileStatus.INCOMPLETE);
         
-    assertFalse(policy.isProfileAcceptable(ProfileStatus.INCOMPLETE));
+    assertFalse(policy.isProfileAcceptable(profile));
   }
   
   @Test
   public void isProfileAcceptable_NoProfile()
   {
     ProfilePolicy policy = new ProfilePolicy();
+    
+    JobseekerProfile profile = new JobseekerProfile(APPROVED_JOBSEEKER, ProfileStatus.NO_PROFILE);
         
-    assertFalse(policy.isProfileAcceptable(ProfileStatus.NO_PROFILE));
+    assertFalse(policy.isProfileAcceptable(profile));
   }
   
   @Test
   public void isProfileAcceptable_Removed()
   {
     ProfilePolicy policy = new ProfilePolicy();
+    
+    JobseekerProfile profile = new JobseekerProfile(APPROVED_JOBSEEKER, ProfileStatus.REMOVED);
         
-    assertFalse(policy.isProfileAcceptable(ProfileStatus.REMOVED));
+    assertFalse(policy.isProfileAcceptable(profile));
   }
   
   @Test
   public void isProfileUnacceptable_Approved()
   {
     ProfilePolicy policy = new ProfilePolicy();
+    
+    JobseekerProfile profile = new JobseekerProfile(APPROVED_JOBSEEKER, ProfileStatus.APPROVED);
         
-    assertFalse(policy.isProfileUnacceptable(ProfileStatus.APPROVED));
+    assertFalse(policy.isProfileUnacceptable(profile));
   }
   
   @Test
   public void isProfileUnacceptable_Incomplete()
   {
     ProfilePolicy policy = new ProfilePolicy();
+    
+    JobseekerProfile profile = new JobseekerProfile(APPROVED_JOBSEEKER, ProfileStatus.INCOMPLETE);
         
-    assertTrue(policy.isProfileUnacceptable(ProfileStatus.INCOMPLETE));
+    assertTrue(policy.isProfileUnacceptable(profile));
   }
   
   @Test
   public void isProfileUnacceptable_NoProfile()
   {
     ProfilePolicy policy = new ProfilePolicy();
+    
+    JobseekerProfile profile = new JobseekerProfile(APPROVED_JOBSEEKER, ProfileStatus.NO_PROFILE);
         
-    assertTrue(policy.isProfileUnacceptable(ProfileStatus.NO_PROFILE));
+    assertTrue(policy.isProfileUnacceptable(profile));
   }
   
   @Test
   public void isProfileUnacceptable_Removed()
   {
     ProfilePolicy policy = new ProfilePolicy();
+    
+    JobseekerProfile profile = new JobseekerProfile(APPROVED_JOBSEEKER, ProfileStatus.REMOVED);
         
-    assertTrue(policy.isProfileUnacceptable(ProfileStatus.REMOVED));
+    assertTrue(policy.isProfileUnacceptable(profile));
   }
 
 }

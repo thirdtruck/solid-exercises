@@ -10,8 +10,10 @@ public class ProfilePolicy
     return true;
   }
 
-  public boolean isProfileAcceptable(ProfileStatus incomplete) {
-    return false;
+  public boolean isProfileAcceptable(ProfileStatus status) {
+    return status != ProfileStatus.INCOMPLETE &&
+           status != ProfileStatus.NO_PROFILE &&
+           status != ProfileStatus.REMOVED;
   }
 
 }

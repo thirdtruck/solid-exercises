@@ -20,6 +20,7 @@ public class TestJobApplier
   
   private ResumeController resumeController;
   private JobApplicationRepository jobApplicationRepository;
+  private JobApplier applier;
   
   @Test
   public void canApply()
@@ -29,7 +30,6 @@ public class TestJobApplier
     Job job = new Job(15);
     ResumeRequest resumeRequest = new ResumeRequest(false, false);
     
-    JobApplier applier = new JobApplier(resumeController, jobApplicationRepository);
     applier.apply(resumeRequest,
                   jobseeker,
                   job,
@@ -44,7 +44,6 @@ public class TestJobApplier
     Job job = new Job(15);
     ResumeRequest resumeRequest = new ResumeRequest(false, false);
     
-    JobApplier applier = new JobApplier(resumeController, jobApplicationRepository);
 
     JobApplierResult result = applier.apply(resumeRequest,
                                             jobseeker,
@@ -61,7 +60,6 @@ public class TestJobApplier
     Job job = new Job(5);
     ResumeRequest resumeRequest = new ResumeRequest(false, false);
     
-    JobApplier applier = new JobApplier(resumeController, jobApplicationRepository);
 
     JobApplierResult result = applier.apply(resumeRequest,
                                             jobseeker,
@@ -78,7 +76,6 @@ public class TestJobApplier
     Job job = new Job(15);
     ResumeRequest resumeRequest = new ResumeRequest(false, false);
     
-    JobApplier applier = new JobApplier(resumeController, jobApplicationRepository);
 
     JobApplierResult result1 = applier.apply(resumeRequest,
                                             jobseeker,
@@ -107,6 +104,8 @@ public class TestJobApplier
     resumeController = new ResumeController(resumeManager, myResumeManager);
     
     jobApplicationRepository = new JobApplicationRepository();
+    
+    applier = new JobApplier(resumeController, jobApplicationRepository);
   }
   
 }

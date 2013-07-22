@@ -3,14 +3,14 @@ package com.theladders.solid.srp;
 import com.theladders.solid.srp.jobseeker.Jobseeker;
 import com.theladders.solid.srp.jobseeker.ProfileStatus;
 
-public class ResumePolicy
+public class ProfilePolicy
 {
 
-  public boolean requiresCompletedResume(Jobseeker jobseeker) {
+  public boolean requiresCompletedProfile(Jobseeker jobseeker) {
     return true;
   }
 
-  public boolean isResumeIncomplete(ProfileStatus incomplete) {
+  public boolean isProfileIncomplete(ProfileStatus incomplete) {
     return true;
   }
 

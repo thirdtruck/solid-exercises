@@ -8,7 +8,7 @@ import org.junit.Test;
 import com.theladders.solid.srp.jobseeker.Jobseeker;
 import com.theladders.solid.srp.jobseeker.ProfileStatus;
 
-public class TestResumePolicy
+public class TestProfilePolicy
 {
 
   private static final int APPROVED_JOBSEEKER    = 1010;
@@ -19,21 +19,29 @@ public class TestResumePolicy
   }
   
   @Test
-  public void requiresCompletedResume()
+  public void requiresCompletedProfile()
   {
     Jobseeker jobseeker = new Jobseeker(APPROVED_JOBSEEKER, true);
 
-    ResumePolicy policy = new ResumePolicy();
+    ProfilePolicy policy = new ProfilePolicy();
     
-    assertTrue(policy.requiresCompletedResume(jobseeker));
+    assertTrue(policy.requiresCompletedProfile(jobseeker));
+  }
+  
+  @Test
+  public void isProfileIncomplete_Incomplete()
+  {
+    ProfilePolicy policy = new ProfilePolicy();
+        
+    assertTrue(policy.isProfileIncomplete(ProfileStatus.INCOMPLETE));
   }
   
   @Test
   public void isResumeIncomplete_Incomplete()
   {
-    ResumePolicy policy = new ResumePolicy();
+    ProfilePolicy policy = new ProfilePolicy();
         
-    assertTrue(policy.isResumeIncomplete(ProfileStatus.INCOMPLETE));
+    assertTrue(policy.isProfileIncomplete(ProfileStatus.INCOMPLETE));
   }
 
 }

@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.theladders.solid.srp.jobseeker.Jobseeker;
+import com.theladders.solid.srp.jobseeker.ProfileStatus;
 
 public class TestResumePolicy
 {
@@ -31,6 +32,14 @@ public class TestResumePolicy
     ResumePolicy policy = new ResumePolicy();
     
     assertTrue(policy.requiresCompletedResume(jobseeker));
+  }
+  
+  @Test
+  public void isResumeIncomplete_Incomplete()
+  {
+    ResumePolicy policy = new ResumePolicy();
+        
+    assertTrue(policy.isResumeIncomplete(ProfileStatus.INCOMPLETE));
   }
 
 }

@@ -15,5 +15,10 @@ public class ProfilePolicy
            status != ProfileStatus.NO_PROFILE &&
            status != ProfileStatus.REMOVED;
   }
+  
+  public boolean isProfileUnacceptable(ProfileStatus status)
+  {
+    return ! isProfileAcceptable(status);
+  }
 
 }

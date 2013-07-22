@@ -11,7 +11,7 @@ public class ProfilePolicy
   }
 
   public boolean isProfileAcceptable(ProfileStatus incomplete) {
-    return true;
+    return false;
   }
 
 }

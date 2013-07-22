@@ -331,11 +331,13 @@ public class TestIt
     JobseekerProfileManager jobseekerProfileManager = new JobseekerProfileManager(jobseekerProfileRepository);
     JobSearchService jobSearchService = new JobSearchService(jobRepository);
     JobApplicationSystem jobApplicationSystem = new JobApplicationSystem(jobApplicationRepository);
+    JobApplier jobApplier = new JobApplier(resumeController, jobApplicationRepository);
 
     controller = new ApplyController(jobseekerProfileManager,
                                      jobSearchService,
                                      jobApplicationSystem,
-                                     resumeController);
+                                     resumeController,
+                                     jobApplier);
   }
 
   private void setupResumeController()

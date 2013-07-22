@@ -9,15 +9,11 @@ import com.theladders.solid.srp.http.HttpRequest;
 import com.theladders.solid.srp.http.HttpResponse;
 import com.theladders.solid.srp.job.Job;
 import com.theladders.solid.srp.job.JobSearchService;
-import com.theladders.solid.srp.job.application.ApplicationFailureException;
-import com.theladders.solid.srp.job.application.JobApplicationResult;
 import com.theladders.solid.srp.job.application.JobApplicationSystem;
-import com.theladders.solid.srp.job.application.UnprocessedApplication;
 import com.theladders.solid.srp.jobseeker.JobseekerProfile;
 import com.theladders.solid.srp.jobseeker.JobseekerProfileManager;
 import com.theladders.solid.srp.jobseeker.ProfileStatus;
 import com.theladders.solid.srp.jobseeker.Jobseeker;
-import com.theladders.solid.srp.resume.Resume;
 import com.theladders.solid.srp.ResumeController;
 
 public class ApplyController
@@ -26,16 +22,19 @@ public class ApplyController
   private final JobSearchService        jobSearchService;
   private final JobApplicationSystem    jobApplicationSystem;
   private final ResumeController        resumeController;
+  private final JobApplier              jobApplier;
 
   public ApplyController(JobseekerProfileManager jobseekerProfileManager,
                          JobSearchService jobSearchService,
                          JobApplicationSystem jobApplicationSystem,
-                         ResumeController resumeController)
+                         ResumeController resumeController,
+                         JobApplier jobApplier)
   {
     this.jobseekerProfileManager = jobseekerProfileManager;
     this.jobSearchService = jobSearchService;
     this.jobApplicationSystem = jobApplicationSystem;
     this.resumeController = resumeController;
+    this.jobApplier = jobApplier;
   }
 
   public HttpResponse handle(HttpRequest request,
@@ -62,11 +61,8 @@ public class ApplyController
 
     ResumeRequest resumeRequest = new HttpRequestResumeParser(request).parse();
     
-    try
-    {
-      apply(resumeRequest, jobseeker, job, origFileName);
-    }
-    catch (Exception e)
+    JobApplierResult result = apply(resumeRequest, jobseeker, job, origFileName);
+    if(! result.wasSuccessful())
     {
       errList.add("We could not process your application.");
       provideErrorView(response, errList, model);
@@ -107,19 +103,14 @@ public class ApplyController
    response.setResult(result);
   }
 
-  private void apply(ResumeRequest resumeRequest,
+  private JobApplierResult apply(ResumeRequest resumeRequest,
                      Jobseeker jobseeker,
                      Job job,
                      String fileName)
   {
-    Resume resume = resumeController.saveNewOrRetrieveExistingResume(fileName, jobseeker, resumeRequest);
-    UnprocessedApplication application = new UnprocessedApplication(jobseeker, job, resume);
-    JobApplicationResult applicationResult = jobApplicationSystem.apply(application);
-
-    if (applicationResult.failure())
-    {
-      throw new ApplicationFailureException(applicationResult.toString());
-    }
+    JobApplierResult jobApplierResult = jobApplier.apply(resumeRequest, jobseeker, job, fileName);
+    System.out.println(jobApplierResult.wasSuccessful());
+    return jobApplierResult;
   }
 
   private static void provideInvalidJobView(HttpResponse response, int jobId)

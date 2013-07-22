@@ -66,7 +66,7 @@ public class ApplyController
     model.put("jobId", job.getJobId());
     model.put("jobTitle", job.getTitle());
 
-    
+    // TODO: Find out how to generate premium and non-premium Jobseekers, then check for that status in ProfilePolicy or another Policy
     if (!jobseeker.isPremium() && profilePolicy.isProfileUnacceptable(profile))
     {
       provideResumeCompletionView(response, model);

@@ -14,7 +14,6 @@ import com.theladders.solid.srp.job.Job;
 import com.theladders.solid.srp.job.JobRepository;
 import com.theladders.solid.srp.job.JobSearchService;
 import com.theladders.solid.srp.job.application.JobApplicationRepository;
-import com.theladders.solid.srp.job.application.JobApplicationSystem;
 import com.theladders.solid.srp.job.application.SuccessfulApplication;
 import com.theladders.solid.srp.jobseeker.JobseekerProfile;
 import com.theladders.solid.srp.jobseeker.JobseekerProfileManager;
@@ -330,13 +329,10 @@ public class TestIt
   {
     JobseekerProfileManager jobseekerProfileManager = new JobseekerProfileManager(jobseekerProfileRepository);
     JobSearchService jobSearchService = new JobSearchService(jobRepository);
-    JobApplicationSystem jobApplicationSystem = new JobApplicationSystem(jobApplicationRepository);
     JobApplier jobApplier = new JobApplier(resumeController, jobApplicationRepository);
 
     controller = new ApplyController(jobseekerProfileManager,
                                      jobSearchService,
-                                     jobApplicationSystem,
-                                     resumeController,
                                      jobApplier);
   }
 

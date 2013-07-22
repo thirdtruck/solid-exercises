@@ -9,31 +9,23 @@ import com.theladders.solid.srp.http.HttpRequest;
 import com.theladders.solid.srp.http.HttpResponse;
 import com.theladders.solid.srp.job.Job;
 import com.theladders.solid.srp.job.JobSearchService;
-import com.theladders.solid.srp.job.application.JobApplicationSystem;
 import com.theladders.solid.srp.jobseeker.JobseekerProfile;
 import com.theladders.solid.srp.jobseeker.JobseekerProfileManager;
 import com.theladders.solid.srp.jobseeker.ProfileStatus;
 import com.theladders.solid.srp.jobseeker.Jobseeker;
-import com.theladders.solid.srp.ResumeController;
 
 public class ApplyController
 {
   private final JobseekerProfileManager jobseekerProfileManager;
   private final JobSearchService        jobSearchService;
-  private final JobApplicationSystem    jobApplicationSystem;
-  private final ResumeController        resumeController;
   private final JobApplier              jobApplier;
 
   public ApplyController(JobseekerProfileManager jobseekerProfileManager,
                          JobSearchService jobSearchService,
-                         JobApplicationSystem jobApplicationSystem,
-                         ResumeController resumeController,
                          JobApplier jobApplier)
   {
     this.jobseekerProfileManager = jobseekerProfileManager;
     this.jobSearchService = jobSearchService;
-    this.jobApplicationSystem = jobApplicationSystem;
-    this.resumeController = resumeController;
     this.jobApplier = jobApplier;
   }
 
@@ -109,7 +101,6 @@ public class ApplyController
                      String fileName)
   {
     JobApplierResult jobApplierResult = jobApplier.apply(resumeRequest, jobseeker, job, fileName);
-    System.out.println(jobApplierResult.wasSuccessful());
     return jobApplierResult;
   }
 

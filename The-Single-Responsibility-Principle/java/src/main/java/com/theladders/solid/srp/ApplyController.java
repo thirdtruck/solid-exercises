@@ -19,6 +19,7 @@ public class ApplyController
   private final JobseekerProfileManager jobseekerProfileManager;
   private final JobSearchService        jobSearchService;
   private final JobApplier              jobApplier;
+  private final ProfilePolicy           profilePolicy;
 
   public ApplyController(JobseekerProfileManager jobseekerProfileManager,
                          JobSearchService jobSearchService,
@@ -27,6 +28,7 @@ public class ApplyController
     this.jobseekerProfileManager = jobseekerProfileManager;
     this.jobSearchService = jobSearchService;
     this.jobApplier = jobApplier;
+    this.profilePolicy = new ProfilePolicy();
   }
 
   public HttpResponse handle(HttpRequest request,
@@ -65,9 +67,8 @@ public class ApplyController
     model.put("jobId", job.getJobId());
     model.put("jobTitle", job.getTitle());
 
-    if (!jobseeker.isPremium() && (profile.getStatus().equals(ProfileStatus.INCOMPLETE) ||
-                                   profile.getStatus().equals(ProfileStatus.NO_PROFILE) ||
-                                   profile.getStatus().equals(ProfileStatus.REMOVED)))
+    
+    if (!jobseeker.isPremium() && ! profilePolicy.isProfileAcceptable(profile))
     {
       provideResumeCompletionView(response, model);
       return response;

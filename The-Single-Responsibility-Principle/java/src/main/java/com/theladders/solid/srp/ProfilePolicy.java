@@ -1,6 +1,7 @@
 package com.theladders.solid.srp;
 
 import com.theladders.solid.srp.jobseeker.Jobseeker;
+import com.theladders.solid.srp.jobseeker.JobseekerProfile;
 import com.theladders.solid.srp.jobseeker.ProfileStatus;
 
 public class ProfilePolicy
@@ -10,15 +11,15 @@ public class ProfilePolicy
     return true;
   }
 
-  public boolean isProfileAcceptable(ProfileStatus status) {
-    return status != ProfileStatus.INCOMPLETE &&
-           status != ProfileStatus.NO_PROFILE &&
-           status != ProfileStatus.REMOVED;
+  public boolean isProfileAcceptable(JobseekerProfile profile) {
+    return profile.getStatus() != ProfileStatus.INCOMPLETE &&
+           profile.getStatus() != ProfileStatus.NO_PROFILE &&
+           profile.getStatus() != ProfileStatus.REMOVED;
   }
   
-  public boolean isProfileUnacceptable(ProfileStatus status)
+  public boolean isProfileUnacceptable(JobseekerProfile profile)
   {
-    return ! isProfileAcceptable(status);
+    return ! isProfileAcceptable(profile);
   }
 
 }

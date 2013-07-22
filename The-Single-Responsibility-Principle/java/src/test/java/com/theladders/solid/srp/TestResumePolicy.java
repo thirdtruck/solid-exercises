@@ -17,12 +17,6 @@ public class TestResumePolicy
   public void setup()
   {
   }
-
-  @Test
-  public void canInitialize()
-  {
-    ResumePolicy policy = new ResumePolicy();
-  }
   
   @Test
   public void requiresCompletedResume()

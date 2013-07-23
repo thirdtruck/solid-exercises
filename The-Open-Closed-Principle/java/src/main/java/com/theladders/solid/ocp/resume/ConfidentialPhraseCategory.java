@@ -1,20 +1,20 @@
 package com.theladders.solid.ocp.resume;
 
-public enum ConfidentialPhraseCategory
+public class ConfidentialPhraseCategory
 {
-  Name(76, "Name"),
-  MailingAddress(79, "MailingAddress"),
-  PhoneNumber(78, "PhoneNumber"),
-  EmailAddress(77, "EmailAddress"),
-  ContactInfo(80, "ContactInfo"),
-  CompanyName(81, "CompanyName"),
-  WorkExperience(82, "WorkExperience");
+//  Name(76, "Name"),
+//  MailingAddress(79, "MailingAddress"),
+//  PhoneNumber(78, "PhoneNumber"),
+//  EmailAddress(77, "EmailAddress"),
+//  ContactInfo(80, "ContactInfo"),
+//  CompanyName(81, "CompanyName"),
+//  WorkExperience(82, "WorkExperience");
 
   @SuppressWarnings("unused")
   private int id;
   private String categoryName;
 
-  private ConfidentialPhraseCategory(int id, String categoryName)
+  public ConfidentialPhraseCategory(int id, String categoryName)
   {
     this.id = id;
     this.categoryName = categoryName;

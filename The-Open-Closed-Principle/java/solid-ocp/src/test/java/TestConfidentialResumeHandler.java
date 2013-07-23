@@ -32,7 +32,7 @@ public class TestConfidentialResumeHandler
   {
     profileManager = new JobseekerProfileManager();
     dao = new JobseekerConfidentialityProfileDao();
-    profile = dao.fetchJobSeekerConfidentialityProfile(USER_ID);
+    profile = dao.fetchJobseekerConfidentialityProfile(USER_ID);
     
     profile.addConfidentialPhraseCategory(ConfidentialPhraseCategory.Name);
     profile.addConfidentialPhraseCategory(ConfidentialPhraseCategory.PhoneNumber);
@@ -54,7 +54,7 @@ public class TestConfidentialResumeHandler
   {
     handler.makeAllCategoriesNonConfidential(user);
     
-    JobseekerConfidentialityProfile profile = dao.fetchJobSeekerConfidentialityProfile(USER_ID);
+    JobseekerConfidentialityProfile profile = dao.fetchJobseekerConfidentialityProfile(USER_ID);
     
     List<ConfidentialPhrase> phrases;
     
@@ -115,7 +115,7 @@ public class TestConfidentialResumeHandler
   {
     handler.makeAllContactInfoNonConfidential(user);
     
-    JobseekerConfidentialityProfile profile = dao.fetchJobSeekerConfidentialityProfile(USER_ID);
+    JobseekerConfidentialityProfile profile = dao.fetchJobseekerConfidentialityProfile(USER_ID);
     
     List<ConfidentialPhrase> phrases;
     

@@ -4,7 +4,7 @@ import com.theladders.solid.ocp.user.User;
 
 public class JobseekerProfileManager
 {
-  public JobseekerProfile getJobSeekerProfile(User user)
+  public JobseekerProfile getJobseekerProfile(User user)
   {
     return new JobseekerProfile(user.getId());
   }

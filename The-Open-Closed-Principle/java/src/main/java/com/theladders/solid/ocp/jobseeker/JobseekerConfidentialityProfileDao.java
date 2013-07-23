@@ -13,7 +13,7 @@ public class JobseekerConfidentialityProfileDao
   }
   
   @SuppressWarnings("unused")
-  public JobseekerConfidentialityProfile fetchJobSeekerConfidentialityProfile(int id)
+  public JobseekerConfidentialityProfile fetchJobseekerConfidentialityProfile(int id)
   {
     JobseekerConfidentialityProfile profile = profiles.get(new Integer(id));
     if(profile != null)

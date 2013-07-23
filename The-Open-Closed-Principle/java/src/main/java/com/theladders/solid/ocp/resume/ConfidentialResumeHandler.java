@@ -18,8 +18,8 @@ public class ConfidentialResumeHandler
 
   public void makeAllCategoriesNonConfidential(User user)
   {
-    JobseekerProfile jsp = jobSeekerProfileManager.getJobSeekerProfile(user);
-    JobseekerConfidentialityProfile profile = jobseekerConfidentialityProfileDao.fetchJobSeekerConfidentialityProfile(jsp.getId());
+    JobseekerProfile jsp = jobSeekerProfileManager.getJobseekerProfile(user);
+    JobseekerConfidentialityProfile profile = jobseekerConfidentialityProfileDao.fetchJobseekerConfidentialityProfile(jsp.getId());
 
     boolean isChanged = false;
     isChanged = profile.markCategoryPhrasesAsPublic(ConfidentialPhraseCategory.Name) || isChanged;
@@ -38,8 +38,8 @@ public class ConfidentialResumeHandler
 
   public void makeAllContactInfoNonConfidential(User user)
   {
-    JobseekerProfile jsp = jobSeekerProfileManager.getJobSeekerProfile(user);
-    JobseekerConfidentialityProfile profile = jobseekerConfidentialityProfileDao.fetchJobSeekerConfidentialityProfile(jsp.getId());
+    JobseekerProfile jsp = jobSeekerProfileManager.getJobseekerProfile(user);
+    JobseekerConfidentialityProfile profile = jobseekerConfidentialityProfileDao.fetchJobseekerConfidentialityProfile(jsp.getId());
     boolean isChanged = false;
     isChanged = profile.markCategoryPhrasesAsPublic(ConfidentialPhraseCategory.PhoneNumber) || isChanged;
     isChanged = profile.markCategoryPhrasesAsPublic(ConfidentialPhraseCategory.EmailAddress) || isChanged;

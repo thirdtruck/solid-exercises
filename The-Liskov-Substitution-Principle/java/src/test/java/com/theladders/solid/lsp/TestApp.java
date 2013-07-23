@@ -13,7 +13,7 @@ public class TestApp {
 
   @Test
   public void test() {
-    fail("Not yet implemented");
+    App.main(null);
   }
 
 }

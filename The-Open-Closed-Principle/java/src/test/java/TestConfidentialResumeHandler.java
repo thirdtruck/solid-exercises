@@ -8,7 +8,7 @@ import org.junit.Test;
 import com.theladders.solid.ocp.jobseeker.JobseekerConfidentialityProfile;
 import com.theladders.solid.ocp.jobseeker.JobseekerConfidentialityProfileDao;
 import com.theladders.solid.ocp.resume.ConfidentialPhrase;
-import com.theladders.solid.ocp.resume.ConfidentialPhraseCategory;
+import com.theladders.solid.ocp.resume.ConfidentialPhraseCategories;
 import com.theladders.solid.ocp.resume.ConfidentialResumeHandler;
 import com.theladders.solid.ocp.resume.JobseekerProfileManager;
 import com.theladders.solid.ocp.user.User;
@@ -34,13 +34,13 @@ public class TestConfidentialResumeHandler
     dao = new JobseekerConfidentialityProfileDao();
     profile = dao.fetchJobseekerConfidentialityProfile(USER_ID);
     
-    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategory.Name);
-    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategory.PhoneNumber);
-    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategory.EmailAddress);
-    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategory.MailingAddress);
-    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategory.ContactInfo);
-    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategory.CompanyName);
-    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategory.WorkExperience);
+    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategories.Name);
+    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategories.PhoneNumber);
+    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategories.EmailAddress);
+    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategories.MailingAddress);
+    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategories.ContactInfo);
+    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategories.CompanyName);
+    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategories.WorkExperience);
     
     user = new User(USER_ID);
     
@@ -58,7 +58,7 @@ public class TestConfidentialResumeHandler
     
     List<ConfidentialPhrase> phrases;
     
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.Name);
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.Name);
     
     assertEquals(1, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
@@ -66,42 +66,42 @@ public class TestConfidentialResumeHandler
       assertFalse(phrase.isConfidential());
     }
     
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.PhoneNumber);
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.PhoneNumber);
     assertEquals(1, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
       assertFalse(phrase.isConfidential());
     }
     
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.EmailAddress);
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.EmailAddress);
     assertEquals(1, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
       assertFalse(phrase.isConfidential());
     }
     
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.MailingAddress);
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.MailingAddress);
     assertEquals(1, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
       assertFalse(phrase.isConfidential());
     }
     
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.ContactInfo);
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.ContactInfo);
     assertEquals(1, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
       assertFalse(phrase.isConfidential());
     }
     
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.CompanyName);
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.CompanyName);
     assertEquals(1, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
       assertFalse(phrase.isConfidential());
     }
     
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.WorkExperience);
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.WorkExperience);
     assertEquals(1, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
@@ -119,49 +119,49 @@ public class TestConfidentialResumeHandler
     
     List<ConfidentialPhrase> phrases;
     
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.Name);
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.Name);
     assertEquals(0, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
       assertTrue(phrase.isConfidential());
     }
     
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.PhoneNumber);
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.PhoneNumber);
     assertEquals(1, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
       assertFalse(phrase.isConfidential());
     }
     
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.EmailAddress);
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.EmailAddress);
     assertEquals(1, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
       assertFalse(phrase.isConfidential());
     }
     
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.MailingAddress);
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.MailingAddress);
     assertEquals(1, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
       assertFalse(phrase.isConfidential());
     }
     
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.ContactInfo);
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.ContactInfo);
     assertEquals(1, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
       assertFalse(phrase.isConfidential());
     }
     
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.CompanyName);
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.CompanyName);
     assertEquals(0, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
       assertTrue(phrase.isConfidential());
     }
     
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.WorkExperience);
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.WorkExperience);
     assertEquals(0, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {

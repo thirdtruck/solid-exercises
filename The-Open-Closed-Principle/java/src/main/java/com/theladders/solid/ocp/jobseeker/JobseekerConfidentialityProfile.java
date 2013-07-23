@@ -37,6 +37,16 @@ public class JobseekerConfidentialityProfile
     return isChanged;
   }
   
+  public void addConfidentialPhraseCategory(ConfidentialPhraseCategory category)
+  {
+    ConfidentialPhrase phrase = new ConfidentialPhrase();
+    phrase.setConfidential(true);
+    List<ConfidentialPhrase> phrases = new ArrayList<ConfidentialPhrase>();
+    phrases.add(phrase);
+    
+    confidentialityProfile.put(category.categoryName(), phrases);
+  }
+  
   public List<ConfidentialPhrase> getPublicPhrases(ConfidentialPhraseCategory category)
   {
     List<ConfidentialPhrase> publicPhrases = new ArrayList<ConfidentialPhrase>();
@@ -46,7 +56,7 @@ public class JobseekerConfidentialityProfile
     {
       for (ConfidentialPhrase phrase : phrases)
       {
-        if (phrase.isConfidential())
+        if (! phrase.isConfidential())
         {
           publicPhrases.add(phrase);
         }
@@ -58,6 +68,11 @@ public class JobseekerConfidentialityProfile
 
   private List<ConfidentialPhrase> getConfidentialPhrases(ConfidentialPhraseCategory category)
   {
-    return confidentialityProfile.get(category.name());
+    return confidentialityProfile.get(category.categoryName());
+  }
+  
+  public void printPhrases()
+  {
+    System.out.println(confidentialityProfile.toString());
   }
 }

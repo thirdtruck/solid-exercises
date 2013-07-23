@@ -170,4 +170,65 @@ public class TestConfidentialResumeHandler
     
   }
 
+  @Test
+  public void testMakesContactCategoriesOfTypePublic()
+  {
+    CategoryType contactType = new CategoryType("Contact");
+    handler.makeAllCategoriesOfTypeNonConfidential(user, contactType);
+    
+    JobseekerConfidentialityProfile profile = dao.fetchJobseekerConfidentialityProfile(USER_ID);
+    
+    List<ConfidentialPhrase> phrases;
+    
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.Name);
+    assertEquals(0, phrases.size());
+    for(ConfidentialPhrase phrase : phrases)
+    {
+      assertTrue(phrase.isConfidential());
+    }
+    
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.PhoneNumber);
+    assertEquals(1, phrases.size());
+    for(ConfidentialPhrase phrase : phrases)
+    {
+      assertFalse(phrase.isConfidential());
+    }
+    
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.EmailAddress);
+    assertEquals(1, phrases.size());
+    for(ConfidentialPhrase phrase : phrases)
+    {
+      assertFalse(phrase.isConfidential());
+    }
+    
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.MailingAddress);
+    assertEquals(1, phrases.size());
+    for(ConfidentialPhrase phrase : phrases)
+    {
+      assertFalse(phrase.isConfidential());
+    }
+    
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.ContactInfo);
+    assertEquals(1, phrases.size());
+    for(ConfidentialPhrase phrase : phrases)
+    {
+      assertFalse(phrase.isConfidential());
+    }
+    
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.CompanyName);
+    assertEquals(0, phrases.size());
+    for(ConfidentialPhrase phrase : phrases)
+    {
+      assertTrue(phrase.isConfidential());
+    }
+    
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.WorkExperience);
+    assertEquals(0, phrases.size());
+    for(ConfidentialPhrase phrase : phrases)
+    {
+      assertTrue(phrase.isConfidential());
+    }
+    
+  }
+
 }

@@ -19,6 +19,7 @@ public class TestConfidentialResumeHandler
 
   private JobseekerProfileManager            profileManager;
   private JobseekerConfidentialityProfileDao dao;
+  private JobseekerConfidentialityProfile    profile;
   
   private ConfidentialResumeHandler          handler;
   
@@ -31,10 +32,21 @@ public class TestConfidentialResumeHandler
   {
     profileManager = new JobseekerProfileManager();
     dao = new JobseekerConfidentialityProfileDao();
+    profile = dao.fetchJobSeekerConfidentialityProfile(USER_ID);
+    
+    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategory.Name);
+    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategory.PhoneNumber);
+    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategory.EmailAddress);
+    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategory.MailingAddress);
+    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategory.ContactInfo);
+    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategory.CompanyName);
+    profile.addConfidentialPhraseCategory(ConfidentialPhraseCategory.WorkExperience);
     
     user = new User(USER_ID);
     
     handler = new ConfidentialResumeHandler(profileManager, dao);
+    
+    
   }
 
   @Test
@@ -47,13 +59,16 @@ public class TestConfidentialResumeHandler
     List<ConfidentialPhrase> phrases;
     
     phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.Name);
+    
+    profile.printPhrases();
+    
     assertEquals(1, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
       assertFalse(phrase.isConfidential());
     }
     
-    profile.getPublicPhrases(ConfidentialPhraseCategory.PhoneNumber);
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.PhoneNumber);
     assertEquals(1, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
@@ -100,7 +115,7 @@ public class TestConfidentialResumeHandler
   @Test
   public void testMakesContactCategoriesPublic()
   {
-    handler.makeAllCategoriesNonConfidential(user);
+    handler.makeAllContactInfoNonConfidential(user);
     
     JobseekerConfidentialityProfile profile = dao.fetchJobSeekerConfidentialityProfile(USER_ID);
     
@@ -113,7 +128,7 @@ public class TestConfidentialResumeHandler
       assertTrue(phrase.isConfidential());
     }
     
-    profile.getPublicPhrases(ConfidentialPhraseCategory.PhoneNumber);
+    phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.PhoneNumber);
     assertEquals(1, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {

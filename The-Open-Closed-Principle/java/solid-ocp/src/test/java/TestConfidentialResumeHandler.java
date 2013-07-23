@@ -107,7 +107,7 @@ public class TestConfidentialResumeHandler
     List<ConfidentialPhrase> phrases;
     
     phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.Name);
-    assertEquals(1, phrases.size());
+    assertEquals(0, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
       assertTrue(phrase.isConfidential());
@@ -142,14 +142,14 @@ public class TestConfidentialResumeHandler
     }
     
     phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.CompanyName);
-    assertEquals(1, phrases.size());
+    assertEquals(0, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
       assertTrue(phrase.isConfidential());
     }
     
     phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.WorkExperience);
-    assertEquals(1, phrases.size());
+    assertEquals(0, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {
       assertTrue(phrase.isConfidential());

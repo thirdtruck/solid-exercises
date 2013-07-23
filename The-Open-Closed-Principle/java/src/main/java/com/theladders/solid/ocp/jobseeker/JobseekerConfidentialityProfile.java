@@ -70,9 +70,4 @@ public class JobseekerConfidentialityProfile
   {
     return confidentialityProfile.get(category.categoryName());
   }
-  
-  public void printPhrases()
-  {
-    System.out.println(confidentialityProfile.toString());
-  }
 }

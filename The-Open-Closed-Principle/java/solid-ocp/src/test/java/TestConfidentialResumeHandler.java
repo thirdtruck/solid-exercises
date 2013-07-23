@@ -60,8 +60,6 @@ public class TestConfidentialResumeHandler
     
     phrases = profile.getPublicPhrases(ConfidentialPhraseCategory.Name);
     
-    profile.printPhrases();
-    
     assertEquals(1, phrases.size());
     for(ConfidentialPhrase phrase : phrases)
     {

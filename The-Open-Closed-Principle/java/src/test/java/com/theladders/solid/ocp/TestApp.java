@@ -1,9 +1,7 @@
-//import static org.junit.Assert.*;
+package com.theladders.solid.ocp;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import com.theladders.solid.ocp.App;
 
 
 public class TestApp {
@@ -11,7 +9,6 @@ public class TestApp {
   @Before
   public void setUp() {
   }
-
   @Test
   public void test() {
     App.main(null);

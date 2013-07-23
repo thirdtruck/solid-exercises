@@ -1,3 +1,4 @@
+package com.theladders.solid.ocp;
 import static org.junit.Assert.*;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import org.junit.Test;
 
 import com.theladders.solid.ocp.jobseeker.JobseekerConfidentialityProfile;
 import com.theladders.solid.ocp.jobseeker.JobseekerConfidentialityProfileDao;
+import com.theladders.solid.ocp.resume.CategoryType;
 import com.theladders.solid.ocp.resume.ConfidentialPhrase;
 import com.theladders.solid.ocp.resume.ConfidentialPhraseCategories;
 import com.theladders.solid.ocp.resume.ConfidentialResumeHandler;
@@ -114,67 +116,6 @@ public class TestConfidentialResumeHandler
   public void testMakesContactCategoriesPublic()
   {
     handler.makeAllContactInfoNonConfidential(user);
-    
-    JobseekerConfidentialityProfile profile = dao.fetchJobseekerConfidentialityProfile(USER_ID);
-    
-    List<ConfidentialPhrase> phrases;
-    
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.Name);
-    assertEquals(0, phrases.size());
-    for(ConfidentialPhrase phrase : phrases)
-    {
-      assertTrue(phrase.isConfidential());
-    }
-    
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.PhoneNumber);
-    assertEquals(1, phrases.size());
-    for(ConfidentialPhrase phrase : phrases)
-    {
-      assertFalse(phrase.isConfidential());
-    }
-    
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.EmailAddress);
-    assertEquals(1, phrases.size());
-    for(ConfidentialPhrase phrase : phrases)
-    {
-      assertFalse(phrase.isConfidential());
-    }
-    
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.MailingAddress);
-    assertEquals(1, phrases.size());
-    for(ConfidentialPhrase phrase : phrases)
-    {
-      assertFalse(phrase.isConfidential());
-    }
-    
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.ContactInfo);
-    assertEquals(1, phrases.size());
-    for(ConfidentialPhrase phrase : phrases)
-    {
-      assertFalse(phrase.isConfidential());
-    }
-    
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.CompanyName);
-    assertEquals(0, phrases.size());
-    for(ConfidentialPhrase phrase : phrases)
-    {
-      assertTrue(phrase.isConfidential());
-    }
-    
-    phrases = profile.getPublicPhrases(ConfidentialPhraseCategories.WorkExperience);
-    assertEquals(0, phrases.size());
-    for(ConfidentialPhrase phrase : phrases)
-    {
-      assertTrue(phrase.isConfidential());
-    }
-    
-  }
-
-  @Test
-  public void testMakesContactCategoriesOfTypePublic()
-  {
-    CategoryType contactType = new CategoryType("Contact");
-    handler.makeAllCategoriesOfTypeNonConfidential(user, contactType);
     
     JobseekerConfidentialityProfile profile = dao.fetchJobseekerConfidentialityProfile(USER_ID);
     

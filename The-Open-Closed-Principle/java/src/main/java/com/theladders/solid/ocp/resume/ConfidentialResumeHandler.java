@@ -22,13 +22,13 @@ public class ConfidentialResumeHandler
     JobseekerConfidentialityProfile profile = jobseekerConfidentialityProfileDao.fetchJobSeekerConfidentialityProfile(jsp.getId());
 
     boolean isChanged = false;
-    isChanged = profile.resetConfidentialFlagsForCategory(ConfidentialPhraseCategory.Name) || isChanged;
-    isChanged = profile.resetConfidentialFlagsForCategory(ConfidentialPhraseCategory.PhoneNumber) || isChanged;
-    isChanged = profile.resetConfidentialFlagsForCategory(ConfidentialPhraseCategory.EmailAddress) || isChanged;
-    isChanged = profile.resetConfidentialFlagsForCategory(ConfidentialPhraseCategory.MailingAddress) || isChanged;
-    isChanged = profile.resetConfidentialFlagsForCategory(ConfidentialPhraseCategory.ContactInfo) || isChanged;
-    isChanged = profile.resetConfidentialFlagsForCategory(ConfidentialPhraseCategory.CompanyName) || isChanged;
-    isChanged = profile.resetConfidentialFlagsForCategory(ConfidentialPhraseCategory.WorkExperience) || isChanged;
+    isChanged = profile.markCategoryPhrasesAsPublic(ConfidentialPhraseCategory.Name) || isChanged;
+    isChanged = profile.markCategoryPhrasesAsPublic(ConfidentialPhraseCategory.PhoneNumber) || isChanged;
+    isChanged = profile.markCategoryPhrasesAsPublic(ConfidentialPhraseCategory.EmailAddress) || isChanged;
+    isChanged = profile.markCategoryPhrasesAsPublic(ConfidentialPhraseCategory.MailingAddress) || isChanged;
+    isChanged = profile.markCategoryPhrasesAsPublic(ConfidentialPhraseCategory.ContactInfo) || isChanged;
+    isChanged = profile.markCategoryPhrasesAsPublic(ConfidentialPhraseCategory.CompanyName) || isChanged;
+    isChanged = profile.markCategoryPhrasesAsPublic(ConfidentialPhraseCategory.WorkExperience) || isChanged;
 
     if (isChanged)
     {
@@ -41,10 +41,10 @@ public class ConfidentialResumeHandler
     JobseekerProfile jsp = jobSeekerProfileManager.getJobSeekerProfile(user);
     JobseekerConfidentialityProfile profile = jobseekerConfidentialityProfileDao.fetchJobSeekerConfidentialityProfile(jsp.getId());
     boolean isChanged = false;
-    isChanged = profile.resetConfidentialFlagsForCategory(ConfidentialPhraseCategory.PhoneNumber) || isChanged;
-    isChanged = profile.resetConfidentialFlagsForCategory(ConfidentialPhraseCategory.EmailAddress) || isChanged;
-    isChanged = profile.resetConfidentialFlagsForCategory(ConfidentialPhraseCategory.MailingAddress) || isChanged;
-    isChanged = profile.resetConfidentialFlagsForCategory(ConfidentialPhraseCategory.ContactInfo) || isChanged;
+    isChanged = profile.markCategoryPhrasesAsPublic(ConfidentialPhraseCategory.PhoneNumber) || isChanged;
+    isChanged = profile.markCategoryPhrasesAsPublic(ConfidentialPhraseCategory.EmailAddress) || isChanged;
+    isChanged = profile.markCategoryPhrasesAsPublic(ConfidentialPhraseCategory.MailingAddress) || isChanged;
+    isChanged = profile.markCategoryPhrasesAsPublic(ConfidentialPhraseCategory.ContactInfo) || isChanged;
 
     if (isChanged)
     {

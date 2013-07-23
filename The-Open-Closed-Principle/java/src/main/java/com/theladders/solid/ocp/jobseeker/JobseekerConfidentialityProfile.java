@@ -16,7 +16,7 @@ public class JobseekerConfidentialityProfile
     confidentialityProfile = new HashMap<>();
   }
 
-  public boolean resetConfidentialFlagsForCategory(ConfidentialPhraseCategory category)
+  public boolean markCategoryPhrasesAsPublic(ConfidentialPhraseCategory category)
   {
     boolean isChanged = false;
 

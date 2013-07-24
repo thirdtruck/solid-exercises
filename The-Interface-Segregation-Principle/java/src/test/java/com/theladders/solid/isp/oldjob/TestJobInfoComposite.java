@@ -55,4 +55,10 @@ public class TestJobInfoComposite
     assertFalse(composite.isJobReq());
   }
 
+  @Test
+  public void thenItShouldHaveABlankJobDescription()
+  {
+    assertEquals("", composite.getDescription());
+  }
+
 }

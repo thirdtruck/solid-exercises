@@ -25,7 +25,7 @@ public class TestJobInfoComposite
     
     Company aCompany = new Company("Example Ltd.", companySize);
     
-    Compensation aCompensation = new Compensation("$100000/year", "$1000");
+    Compensation aCompensation = new Compensation("Annual", "$1000", "$100000", "Other");
     
     composite = new JobInfoComposite(aBasicJob, aCompany, aCompensation);
   }
@@ -64,13 +64,25 @@ public class TestJobInfoComposite
   @Test
   public void thenTheCompensationShouldHaveTheRightCompensation()
   {
-    assertEquals("$100000/year", compensation.getCompensation());
+    assertEquals("Annual", compensation.getCompensation());
   }
 
   @Test
   public void thenTheCompensationShouldHaveTheRightCompensationBonus()
   {
     assertEquals("$1000", compensation.getCompensationBonus());
+  }
+
+  @Test
+  public void thenTheCompensationShouldHaveTheRightCompensationSalary()
+  {
+    assertEquals("$100000", compensation.getCompensationSalary());
+  }
+
+  @Test
+  public void thenTheCompensationShouldHaveTheRightCompensationOther()
+  {
+    assertEquals("Other", compensation.getCompensationOther());
   }
 
   @Test

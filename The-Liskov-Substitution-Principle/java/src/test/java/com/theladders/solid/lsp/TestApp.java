@@ -20,7 +20,7 @@ public class TestApp
   public void test()
   {
     EnvSetupFilter filter = new EnvSetupFilter(hostName);
-    Environment env = filter.getEnvironment(true, true);
+    Environment env = filter.buildEnvironment(true, true);
   }
 
 }

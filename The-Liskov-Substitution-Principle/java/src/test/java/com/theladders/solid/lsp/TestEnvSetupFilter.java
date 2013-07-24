@@ -40,7 +40,7 @@ public class TestEnvSetupFilter {
     boolean isSecure = true;
     boolean loggedInUser = true;
 
-    Environment env = filter.getEnvironment(isSecure, loggedInUser);
+    Environment env = filter.buildEnvironment(isSecure, loggedInUser);
     
     assertEquals("true", env.get("isSSL"));
     assertEquals("https://www.theladders.com/member/", env.get("secureHome"));
@@ -63,7 +63,7 @@ public class TestEnvSetupFilter {
     boolean isSecure = true;
     boolean loggedInUser = false;
 
-    Environment env = filter.getEnvironment(isSecure, loggedInUser);
+    Environment env = filter.buildEnvironment(isSecure, loggedInUser);
     
     assertEquals("true", env.get("isSSL"));
     assertEquals("https://www.theladders.com/", env.get("secureHome"));
@@ -86,7 +86,7 @@ public class TestEnvSetupFilter {
     boolean isSecure = false;
     boolean loggedInUser = true;
 
-    Environment env = filter.getEnvironment(isSecure, loggedInUser);
+    Environment env = filter.buildEnvironment(isSecure, loggedInUser);
     
     assertEquals("true", env.get("isSSL"));
     assertEquals("https://www.theladders.com/member/", env.get("secureHome"));
@@ -109,7 +109,7 @@ public class TestEnvSetupFilter {
     boolean isSecure = false;
     boolean loggedInUser = false;
 
-    Environment env = filter.getEnvironment(isSecure, loggedInUser);
+    Environment env = filter.buildEnvironment(isSecure, loggedInUser);
     
     assertEquals("true", env.get("isSSL"));
     assertEquals("https://www.theladders.com/", env.get("secureHome"));

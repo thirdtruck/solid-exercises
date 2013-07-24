@@ -71,7 +71,7 @@ public class EnvSetupFilter
     this.hostName = hostName;
   }
 
-  public Environment getEnvironment(boolean isSecure, boolean loggedInUser)
+  public Environment buildEnvironment(boolean isSecure, boolean loggedInUser)
   {
     Environment baseEnv = EnvironmentFactory.getEnvironmentFor(hostName);
 

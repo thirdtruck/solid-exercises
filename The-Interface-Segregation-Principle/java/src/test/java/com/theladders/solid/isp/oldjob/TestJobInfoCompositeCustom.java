@@ -41,7 +41,8 @@ public class TestJobInfoCompositeCustom
     composite.setExclusive(true);
   }
   
-  private void whenIDecompositeItIntoItsInterfaces() {
+  private void whenIDecompositeItIntoItsInterfaces()
+  {
     company = (CompanyInfo)composite;
     compensation = (CompensationInfo)composite;
     basicJob = (BasicJobInfo)composite;

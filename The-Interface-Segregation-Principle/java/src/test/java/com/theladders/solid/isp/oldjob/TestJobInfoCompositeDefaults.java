@@ -33,7 +33,8 @@ public class TestJobInfoCompositeDefaults
   {
   }
   
-  private void whenIDecompositeItIntoItsInterfaces() {
+  private void whenIDecompositeItIntoItsInterfaces()
+  {
     accessibility = (AccessibilityInfo)composite;
   }
 

@@ -21,11 +21,13 @@ public class TestJobInfoComposite
   
   private void givenAJobInfoCompositeInstance()
   {
+    BasicJob basicJob = new BasicJob(false, "A nice place to work!");
+    
     Company company = new Company("Example Ltd.", companySize);
     
     Compensation compensation = new Compensation("$100000/year", "$1000");
     
-    composite = new JobInfoComposite(company, compensation);
+    composite = new JobInfoComposite(basicJob, company, compensation);
   }
 
   private void whenISetTheDefaultValuesOnTheJobInfoComposite()
@@ -72,15 +74,15 @@ public class TestJobInfoComposite
   }
 
   @Test
-  public void thenItShouldNotBeAJobReq()
+  public void thenTheBasicJobShouldHaveTheRightReqStatus()
   {
     assertFalse(basicJob.isJobReq());
   }
 
   @Test
-  public void thenItShouldHaveABlankJobDescription()
+  public void thenTheBasicJobSHouldHaveTheRightDescription()
   {
-    assertEquals("", basicJob.getDescription());
+    assertEquals("A nice place to work!", basicJob.getDescription());
   }
 
 }

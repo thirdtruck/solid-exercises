@@ -15,6 +15,6 @@ public class JobInfoComposite extends JobImpl
   @Override
   public String getDescription() {
     // TODO Auto-generated method stub
-    return null;
+    return "";
   }
 }

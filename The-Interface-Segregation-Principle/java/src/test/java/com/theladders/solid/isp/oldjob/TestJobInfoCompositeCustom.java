@@ -35,6 +35,9 @@ public class TestJobInfoCompositeCustom
 
   private void whenISetTheDefaultValuesOnTheJobInfoComposite()
   {
+    composite.setAnonymous(true);
+    composite.setConfidential(true);
+    composite.setExclusive(true);
   }
   
   private void whenIDecompositeItIntoItsInterfaces() {
@@ -104,6 +107,24 @@ public class TestJobInfoCompositeCustom
   public void thenTheLocationShouldHaveTheRightLocation()
   {
     assertEquals("Anywhere, USA", location.getLocation());
+  }
+
+  @Test
+  public void thenTheCompositeShouldHaveTheRightAnonymity()
+  {
+    assertTrue(composite.isAnonymous());
+  }
+  
+  @Test
+  public void thenTheCompositeShouldHaveTheRightConfidentiality()
+  {
+    assertTrue(composite.isConfidential());
+  }
+  
+  @Test
+  public void thenTheCompositeShouldHaveTheRightExclusivity()
+  {
+    assertTrue(composite.isExclusive());
   }
 
 }

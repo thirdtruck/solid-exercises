@@ -2,7 +2,7 @@ package com.theladders.solid.isp.oldjob;
 
 import com.theladders.solid.isp.oldjob.fulldata.*;
 
-public class JobInfoComposite extends JobImpl implements CompanyInfo
+public class JobInfoComposite extends JobImpl implements CompanyInfo, CompensationInfo
 {
   private final Company company;
   private final Compensation compensation;
@@ -28,13 +28,13 @@ public class JobInfoComposite extends JobImpl implements CompanyInfo
   @Override
   public String getCompensation()
   {
-    return this.compensation.getDescription();
+    return compensation.getDescription();
   }
   
   @Override
   public String getCompensationBonus()
   {
-    return this.compensation.getBonus();
+    return compensation.getBonus();
   }
 
   @Override

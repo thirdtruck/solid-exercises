@@ -101,7 +101,7 @@ public class TestJobInfoComposite
   }
 
   @Test
-  public void thenTheCompositeSHouldHaveTheRightLocation()
+  public void thenTheCompositeShouldHaveTheRightLocation()
   {
     assertEquals("Anywhere, USA", location.getLocation());
   }

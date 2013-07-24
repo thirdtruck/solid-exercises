@@ -2,17 +2,19 @@ package com.theladders.solid.isp.oldjob;
 
 import com.theladders.solid.isp.oldjob.fulldata.*;
 
-public class JobInfoComposite extends JobImpl implements BasicJobInfo, CompanyInfo, CompensationInfo
+public class JobInfoComposite extends JobImpl implements BasicJobInfo, CompanyInfo, CompensationInfo, LocationInfo
 {
   private final Company company;
   private final Compensation compensation;
   private final BasicJob basicJob;
+  private final Location location;
   
-  public JobInfoComposite(BasicJob basicJob, Company company, Compensation compensation)
+  public JobInfoComposite(BasicJob basicJob, Company company, Compensation compensation, Location location)
   {
     this.basicJob = basicJob;
     this.company = company;
     this.compensation = compensation;
+    this.location = location;
   }
   
   @Override
@@ -61,6 +63,12 @@ public class JobInfoComposite extends JobImpl implements BasicJobInfo, CompanyIn
     return basicJob.getDescription();
   }
   
+  @Override
+  public String getLocation()
+  {
+    return location.getLocation();
+  }
+  
 /*
 
   @Override
@@ -83,12 +91,6 @@ public class JobInfoComposite extends JobImpl implements BasicJobInfo, CompanyIn
 
   @Override
   public Industry getIndustry() {
-    // TODO Auto-generated method stub
-    return null;
-  }
-
-  @Override
-  public String getLocation() {
     // TODO Auto-generated method stub
     return null;
   }

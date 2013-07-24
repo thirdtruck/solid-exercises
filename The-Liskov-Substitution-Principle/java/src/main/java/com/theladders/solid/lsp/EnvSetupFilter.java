@@ -82,7 +82,7 @@ public class EnvSetupFilter
 
     Environment securityConfiguredEnvironment = mergeInSecurityConfigurations(baseEnv, keyMap);
     
-    new SiteConfiguration().seedEnvironment(securityConfiguredEnvironment);
+    addHomeSiteURLs(securityConfiguredEnvironment);
 
     // Adds /member to site URLs if the user is logged in.
     if (loggedInUser)
@@ -93,6 +93,17 @@ public class EnvSetupFilter
     }
 
     return securityConfiguredEnvironment;
+  }
+
+  private void addHomeSiteURLs(Environment environment) {
+    SiteConfiguration r = new SiteConfiguration();
+    
+    environment.put(SiteConfiguration.GUEST_SITE_HOME, environment.get("home"));
+    environment.put(SiteConfiguration.SECURE_GUEST_SITE_HOME, environment.get("secureHome"));
+    environment.put(SiteConfiguration.FALCON_SITE_HOME, environment.get("home"));
+    environment.put(SiteConfiguration.SECURE_FALCON_SITE_HOME, environment.get("secureHome"));
+    environment.put(SiteConfiguration.MEMBER_SITE_HOME, environment.get("home") + SiteConfiguration.MEMBER_PATH_PREFIX);
+    environment.put(SiteConfiguration.SECURE_MEMBER_SITE_HOME, environment.get("secureHome") + SiteConfiguration.MEMBER_PATH_PREFIX);
   }
 
   private Map<String, String> buildSecurityConfigurationKeyMap(

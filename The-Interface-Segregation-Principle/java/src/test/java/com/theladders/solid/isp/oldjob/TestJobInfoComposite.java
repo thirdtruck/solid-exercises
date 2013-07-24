@@ -21,6 +21,7 @@ public class TestJobInfoComposite
   private void whenISetTheDefaultValuesOnTheJobInfoComposite()
   {
     composite.setCompany("Example Ltd.");
+    composite.setCompanySize(new Integer(50));
   }
 
   @Before
@@ -34,6 +35,12 @@ public class TestJobInfoComposite
   public void thenItShouldHaveTheRightCompanyName()
   {
     assertEquals("Example Ltd.", composite.getCompany());
+  }
+
+  @Test
+  public void thenItShouldHaveTheRightCompanySize()
+  {
+    assertEquals(new Integer(50), composite.getCompanySize());
   }
 
 }

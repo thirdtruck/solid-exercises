@@ -27,18 +27,6 @@ public class EnvSetupFilter
   private static final String              MEMBER_HOME = "memberHome";
   private static final String              GUEST_HOME  = "guestHome";
 
-  static
-  {
-    noSSLPropMap.put("secureHome", "home");
-    noSSLPropMap.put(AUTO_HOME, "home");
-
-    noSSLPropMap.put("secureGuestHome", "insecureGuestHome");
-    noSSLPropMap.put("secureMemberHome", "insecureMemberHome");
-    noSSLPropMap.put("secureStaticBase", "staticBase");
-    noSSLPropMap.put(MEMBER_HOME, "insecureMemberHome");
-    noSSLPropMap.put(GUEST_HOME, "insecureGuestHome");
-  }
-
   private final String hostName;
 
   public EnvSetupFilter(String hostName)

@@ -11,17 +11,28 @@ public class TestJobInfoComposite
 {
   
   private JobInfoComposite composite;
-
-  @Before
-  public void setUp()
+  
+  private void givenAJobInfoCompositeInstance()
   {
     composite = new JobInfoComposite();
   }
 
-  @Test
-  public void test()
+  private void whenISetTheDefaultValuesOnTheJobInfoComposite()
   {
-    fail("Not yet implemented");
+    composite.setCompany("Example Ltd.");
+  }
+
+  @Before
+  public void setUp()
+  {
+    givenAJobInfoCompositeInstance();
+    whenISetTheDefaultValuesOnTheJobInfoComposite();
+  }
+
+  @Test
+  public void thenItShouldHaveTheRightCompanyName()
+  {
+    assertEquals("Example Ltd.", composite.getCompany());
   }
 
 }

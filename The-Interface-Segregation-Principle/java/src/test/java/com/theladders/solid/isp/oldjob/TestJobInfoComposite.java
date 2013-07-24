@@ -5,8 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.theladders.solid.isp.oldjob.JobInfoComposite;
-import com.theladders.solid.isp.oldjob.fulldata.Company;
-import com.theladders.solid.isp.oldjob.fulldata.Compensation;
+import com.theladders.solid.isp.oldjob.fulldata.*;
 
 
 public class TestJobInfoComposite
@@ -15,6 +14,8 @@ public class TestJobInfoComposite
   private JobInfoComposite composite;
   
   private final Integer companySize = new Integer(50);
+  
+  private CompanyInfo company;
   
   private void givenAJobInfoCompositeInstance()
   {
@@ -29,18 +30,23 @@ public class TestJobInfoComposite
   {
 //    composite.setCompensation("$100000/year");
   }
+  
+  private void whenIDecompositeItIntoItsInterfaces() {
+    company = (CompanyInfo)composite;
+  }
 
   @Before
   public void setUp()
   {
     givenAJobInfoCompositeInstance();
     whenISetTheDefaultValuesOnTheJobInfoComposite();
+    whenIDecompositeItIntoItsInterfaces();
   }
 
   @Test
   public void thenItShouldHaveTheRightCompanyName()
   {
-    assertEquals("Example Ltd.", composite.getCompany());
+    assertEquals("Example Ltd.", company.getCompany());
   }
 
   @Test

@@ -19,7 +19,7 @@ public class EnvSetupFilter
   // insecure, auto -> secure
   private static final SecurePropMap securePropMap = new SecurePropMap();
   // auto -> insecure
-  private static final Map<String, String> insecurePropMap = new HashMap<>();
+  private static final InsecurePropMap insecurePropMap = new InsecurePropMap();
   // secure -> insecure
   private static final Map<String, String> noSSLPropMap = new HashMap<>();
 
@@ -29,10 +29,6 @@ public class EnvSetupFilter
 
   static
   {
-    insecurePropMap.put(AUTO_HOME, "home");
-    insecurePropMap.put(MEMBER_HOME, "insecureMemberHome");
-    insecurePropMap.put(GUEST_HOME, "insecureGuestHome");
-
     noSSLPropMap.put("secureHome", "home");
     noSSLPropMap.put(AUTO_HOME, "home");
 

@@ -16,6 +16,7 @@ public class TestJobInfoComposite
   private final Integer companySize = new Integer(50);
   
   private CompanyInfo company;
+  private CompensationInfo compensation;
   
   private void givenAJobInfoCompositeInstance()
   {
@@ -33,6 +34,7 @@ public class TestJobInfoComposite
   
   private void whenIDecompositeItIntoItsInterfaces() {
     company = (CompanyInfo)composite;
+    compensation = (CompensationInfo)composite;
   }
 
   @Before
@@ -58,13 +60,13 @@ public class TestJobInfoComposite
   @Test
   public void thenItShouldHaveTheRightCompensation()
   {
-    assertEquals("$100000/year", composite.getCompensation());
+    assertEquals("$100000/year", compensation.getCompensation());
   }
 
   @Test
   public void thenItShouldHaveTheRightCompensationBonus()
   {
-    assertEquals("$1000", composite.getCompensationBonus());
+    assertEquals("$1000", compensation.getCompensationBonus());
   }
 
   @Test

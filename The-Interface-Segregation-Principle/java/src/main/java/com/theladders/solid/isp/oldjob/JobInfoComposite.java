@@ -16,6 +16,12 @@ public class JobInfoComposite extends JobImpl
   {
     return company.getName();
   }
+  
+  @Override
+  public Integer getCompanySize()
+  {
+    return company.getSize();
+  }
 
   @Override
   public boolean isJobReq() {

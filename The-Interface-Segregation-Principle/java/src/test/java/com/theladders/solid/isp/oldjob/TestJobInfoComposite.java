@@ -32,7 +32,7 @@ public class TestJobInfoComposite
 
   private void whenISetTheDefaultValuesOnTheJobInfoComposite()
   {
-//    composite.setCompensation("$100000/year");
+    composite.setLocation("Anywhere, USA");
   }
   
   private void whenIDecompositeItIntoItsInterfaces() {
@@ -83,6 +83,12 @@ public class TestJobInfoComposite
   public void thenTheBasicJobSHouldHaveTheRightDescription()
   {
     assertEquals("A nice place to work!", basicJob.getDescription());
+  }
+
+  @Test
+  public void thenTheCompositeSHouldHaveTheRightLocation()
+  {
+    assertEquals("Anywhere, USA", composite.getLocation());
   }
 
 }

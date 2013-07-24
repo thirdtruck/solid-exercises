@@ -6,9 +6,11 @@ public class JobInfoComposite extends JobImpl implements BasicJobInfo, CompanyIn
 {
   private final Company company;
   private final Compensation compensation;
+  private final BasicJob basicJob;
   
-  public JobInfoComposite(Company company, Compensation compensation)
+  public JobInfoComposite(BasicJob basicJob, Company company, Compensation compensation)
   {
+    this.basicJob = basicJob;
     this.company = company;
     this.compensation = compensation;
   }
@@ -39,11 +41,11 @@ public class JobInfoComposite extends JobImpl implements BasicJobInfo, CompanyIn
 
   @Override
   public boolean isJobReq() {
-    return false;
+    return basicJob.isReq();
   }
 
   @Override
   public String getDescription() {
-    return "";
+    return basicJob.getDescription();
   }
 }

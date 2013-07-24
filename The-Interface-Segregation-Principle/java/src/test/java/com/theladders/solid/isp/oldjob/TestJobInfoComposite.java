@@ -24,6 +24,7 @@ public class TestJobInfoComposite
   private void whenISetTheDefaultValuesOnTheJobInfoComposite()
   {
     composite.setCompensation("$100000/year");
+    composite.setCompensationBonus("$1000");
   }
 
   @Before
@@ -50,7 +51,13 @@ public class TestJobInfoComposite
   {
     assertEquals("$100000/year", composite.getCompensation());
   }
-  
+
+  @Test
+  public void thenItShouldHaveTheRightCompensationBonus()
+  {
+    assertEquals("$1000", composite.getCompensationBonus());
+  }
+
   @Test
   public void thenItShouldNotBeAJobReq()
   {

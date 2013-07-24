@@ -17,7 +17,7 @@ public class EnvSetupFilter
   public static final String               SECURE_HOST = "secure";
 
   // insecure, auto -> secure
-  private static final Map<String, String> securePropMap = new HashMap<>();
+  private static final SecurePropMap securePropMap = new SecurePropMap();
   // auto -> insecure
   private static final Map<String, String> insecurePropMap = new HashMap<>();
   // secure -> insecure
@@ -29,27 +29,6 @@ public class EnvSetupFilter
 
   static
   {
-    securePropMap.put("flash", "secureFlash");
-    securePropMap.put("images", "secureImages");
-    securePropMap.put("css", "secureCss");
-    securePropMap.put("js", "secureJs");
-    securePropMap.put("widgets", "secureWidgets");
-
-    securePropMap.put("landingFlash", "secureLandingFlash");
-    securePropMap.put("landingImages", "secureLandingImages");
-    securePropMap.put("landingCss", "secureLandingCss");
-
-    securePropMap.put("opalImages", "secureOpalImages");
-    securePropMap.put("opalCss", "secureOpalCss");
-
-    securePropMap.put("seoImages", "secureSeoImages");
-    securePropMap.put("seoCss", "secureSeoCss");
-    securePropMap.put("staticBase", "secureStaticBase");
-
-    securePropMap.put(AUTO_HOME, "secureHome");
-    securePropMap.put(MEMBER_HOME, "secureMemberHome");
-    securePropMap.put(GUEST_HOME, "secureGuestHome");
-
     insecurePropMap.put(AUTO_HOME, "home");
     insecurePropMap.put(MEMBER_HOME, "insecureMemberHome");
     insecurePropMap.put(GUEST_HOME, "insecureGuestHome");

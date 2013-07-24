@@ -18,6 +18,7 @@ public class TestJobInfoComposite
   private CompanyInfo company;
   private CompensationInfo compensation;
   private BasicJobInfo basicJob;
+  private LocationInfo location;
   
   private void givenAJobInfoCompositeInstance()
   {
@@ -27,18 +28,20 @@ public class TestJobInfoComposite
     
     Compensation aCompensation = new Compensation("Annual", "$1000", "$100000", "Other");
     
-    composite = new JobInfoComposite(aBasicJob, aCompany, aCompensation);
+    Location aLocation = new Location("Anywhere, USA");
+    
+    composite = new JobInfoComposite(aBasicJob, aCompany, aCompensation, aLocation);
   }
 
   private void whenISetTheDefaultValuesOnTheJobInfoComposite()
   {
-    composite.setLocation("Anywhere, USA");
   }
   
   private void whenIDecompositeItIntoItsInterfaces() {
     company = (CompanyInfo)composite;
     compensation = (CompensationInfo)composite;
     basicJob = (BasicJobInfo)composite;
+    location = (LocationInfo)composite;
   }
 
   @Before
@@ -100,7 +103,7 @@ public class TestJobInfoComposite
   @Test
   public void thenTheCompositeSHouldHaveTheRightLocation()
   {
-    assertEquals("Anywhere, USA", composite.getLocation());
+    assertEquals("Anywhere, USA", location.getLocation());
   }
 
 }

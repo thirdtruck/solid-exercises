@@ -49,4 +49,10 @@ public class TestJobInfoComposite
     assertEquals("$100000/year", composite.getCompensation());
   }
 
+  @Test
+  public void thenItShouldNotBeAJobReq()
+  {
+    assertFalse(composite.isJobReq());
+  }
+
 }

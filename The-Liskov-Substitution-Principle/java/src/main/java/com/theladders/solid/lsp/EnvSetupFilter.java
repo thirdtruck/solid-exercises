@@ -84,10 +84,8 @@ public class EnvSetupFilter
     
     addHomeSiteURLs(securityConfiguredEnvironment);
 
-    // Adds /member to site URLs if the user is logged in.
     if (loggedInUser)
     {
-      /* Ensure site.home is member home */
       securityConfiguredEnvironment.put("home", securityConfiguredEnvironment.get("home") + SiteConfiguration.MEMBER_PATH_PREFIX);
       securityConfiguredEnvironment.put("secureHome", securityConfiguredEnvironment.get("secureHome") + SiteConfiguration.MEMBER_PATH_PREFIX);
     }

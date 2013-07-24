@@ -44,15 +44,15 @@ public class TestJobInfoComposite
   }
 
   @Test
-  public void thenItShouldHaveTheRightCompanyName()
+  public void thenTheCompanyShouldHaveTheRightCompanyName()
   {
     assertEquals("Example Ltd.", company.getCompany());
   }
 
   @Test
-  public void thenItShouldHaveTheRightCompanySize()
+  public void thenTheCompanyShouldHaveTheRightCompanySize()
   {
-    assertEquals(companySize, composite.getCompanySize());
+    assertEquals(companySize, company.getCompanySize());
   }
 
   @Test

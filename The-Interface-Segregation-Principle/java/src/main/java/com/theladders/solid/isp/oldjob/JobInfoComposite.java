@@ -54,12 +54,14 @@ public class JobInfoComposite extends JobImpl implements BasicJobInfo, CompanyIn
   }
 
   @Override
-  public boolean isJobReq() {
+  public boolean isJobReq()
+  {
     return basicJob.isReq();
   }
 
   @Override
-  public String getDescription() {
+  public String getDescription()
+  {
     return basicJob.getDescription();
   }
   

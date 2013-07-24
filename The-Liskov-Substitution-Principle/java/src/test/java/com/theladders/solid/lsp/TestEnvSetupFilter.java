@@ -15,6 +15,24 @@ public class TestEnvSetupFilter {
   {
     filter = new EnvSetupFilter(hostName);
   }
+  
+  /*
+  public void whenAUserRequestsAnEnvironmentVariable(){
+    
+  }
+  
+  public void thenTheVariableIsPresent(){
+    
+  }
+  
+  public void testCanAccesseVariable(){
+    
+    given..();
+    when...();
+    then...();
+    
+  }
+  */
 
   @Test
   public void testIsSecureAndIsLoggedInUser()

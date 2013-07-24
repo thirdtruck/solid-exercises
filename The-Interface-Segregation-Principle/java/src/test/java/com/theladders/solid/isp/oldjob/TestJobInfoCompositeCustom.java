@@ -14,7 +14,8 @@ public class TestJobInfoCompositeCustom
   private JobInfoComposite composite;
   
   private final Integer companySize = new Integer(50);
-  
+
+  private AccessibilityInfo accessibility;
   private CompanyInfo company;
   private CompensationInfo compensation;
   private BasicJobInfo basicJob;
@@ -45,6 +46,7 @@ public class TestJobInfoCompositeCustom
     compensation = (CompensationInfo)composite;
     basicJob = (BasicJobInfo)composite;
     location = (LocationInfo)composite;
+    accessibility = (AccessibilityInfo)composite;
   }
 
   @Before
@@ -110,21 +112,21 @@ public class TestJobInfoCompositeCustom
   }
 
   @Test
-  public void thenTheCompositeShouldHaveTheRightAnonymity()
+  public void thenTheAccessibilityShouldHaveTheRightAnonymity()
   {
-    assertTrue(composite.isAnonymous());
+    assertTrue(accessibility.isAnonymous());
   }
   
   @Test
-  public void thenTheCompositeShouldHaveTheRightConfidentiality()
+  public void thenTheAccessibilityShouldHaveTheRightConfidentiality()
   {
-    assertTrue(composite.isConfidential());
+    assertTrue(accessibility.isConfidential());
   }
   
   @Test
-  public void thenTheCompositeShouldHaveTheRightExclusivity()
+  public void thenTheAccessibilityShouldHaveTheRightExclusivity()
   {
-    assertTrue(composite.isExclusive());
+    assertTrue(accessibility.isExclusive());
   }
 
 }

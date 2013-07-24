@@ -10,11 +10,14 @@ import com.theladders.solid.isp.oldjob.fulldata.*;
 
 public class TestJobInfoCompositeDefaults
 {
+  private AccessibilityInfo accessibility;
   
   private JobInfoComposite composite;
   
   private void givenAJobInfoCompositeInstance()
   {
+    Accessibility anAccessibility = new Accessibility(false, false, false);
+    
     BasicJob aBasicJob = new BasicJob(false, null);
     
     Company aCompany = new Company(null, null);
@@ -31,6 +34,7 @@ public class TestJobInfoCompositeDefaults
   }
   
   private void whenIDecompositeItIntoItsInterfaces() {
+    accessibility = (AccessibilityInfo)composite;
   }
 
   @Before
@@ -42,21 +46,21 @@ public class TestJobInfoCompositeDefaults
   }
 
   @Test
-  public void thenTheCompositeShouldHaveTheRightDefaultAnonymity()
+  public void thenTheAccessibilityShouldHaveTheRightDefaultAnonymity()
   {
-    assertFalse(composite.isAnonymous());
+    assertFalse(accessibility.isAnonymous());
   }
   
   @Test
-  public void thenTheCompositeShouldHaveTheRightDefaultConfidentiality()
+  public void thenTheAccessibilityShouldHaveTheRightDefaultConfidentiality()
   {
-    assertFalse(composite.isConfidential());
+    assertFalse(accessibility.isConfidential());
   }
   
   @Test
-  public void thenTheCompositeShouldHaveTheRightDefaultExclusivity()
+  public void thenTheAccessibilityShouldHaveTheRightDefaultExclusivity()
   {
-    assertFalse(composite.isExclusive());
+    assertFalse(accessibility.isExclusive());
   }
 
 }

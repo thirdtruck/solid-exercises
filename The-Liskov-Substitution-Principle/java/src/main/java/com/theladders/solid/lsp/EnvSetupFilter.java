@@ -23,10 +23,6 @@ public class EnvSetupFilter
   // secure -> insecure
   private static final Map<String, String> noSSLPropMap = new HashMap<>();
 
-  private static final String              AUTO_HOME   = "autoProtoHome";
-  private static final String              MEMBER_HOME = "memberHome";
-  private static final String              GUEST_HOME  = "guestHome";
-
   private final String hostName;
 
   public EnvSetupFilter(String hostName)

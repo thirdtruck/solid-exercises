@@ -62,13 +62,13 @@ public class TestJobInfoComposite
   }
 
   @Test
-  public void thenItShouldHaveTheRightCompensation()
+  public void thenTheCompensationShouldHaveTheRightCompensation()
   {
     assertEquals("$100000/year", compensation.getCompensation());
   }
 
   @Test
-  public void thenItShouldHaveTheRightCompensationBonus()
+  public void thenTheCompensationShouldHaveTheRightCompensationBonus()
   {
     assertEquals("$1000", compensation.getCompensationBonus());
   }

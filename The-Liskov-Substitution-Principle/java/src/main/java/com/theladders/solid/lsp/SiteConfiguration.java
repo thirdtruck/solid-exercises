@@ -76,23 +76,4 @@ public class SiteConfiguration
   public static final String SECURE_FALCON_SITE_HOME          = "secureFalconSiteHome";
   public static final String MEMBER_SITE_HOME                 = "memberSiteHome";
   public static final String SECURE_MEMBER_SITE_HOME          = "secureMemberSiteHome";
-
-  /**
-   * Put jobSearchCriteria, home, and guestHome into the Environment object.
-   * <p/>
-   * Puts "insecureMemberHome", "secureMemberHome", "insecureGuestHome",
-   * "secureGuestHome", and "jobSearchCriteria" into the given Environment.
-   * @param environment
-   *          The current environment (for legacy compatibility)
-   */
-
-  public void seedEnvironment(Environment environment)
-  {
-    environment.put(GUEST_SITE_HOME, environment.get("home"));
-    environment.put(SECURE_GUEST_SITE_HOME, environment.get("secureHome"));
-    environment.put(FALCON_SITE_HOME, environment.get("home"));
-    environment.put(SECURE_FALCON_SITE_HOME, environment.get("secureHome"));
-    environment.put(MEMBER_SITE_HOME, environment.get("home") + MEMBER_PATH_PREFIX);
-    environment.put(SECURE_MEMBER_SITE_HOME, environment.get("secureHome") + MEMBER_PATH_PREFIX);
-  }
 }

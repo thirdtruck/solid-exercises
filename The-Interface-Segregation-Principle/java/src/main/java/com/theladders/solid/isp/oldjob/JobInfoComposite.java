@@ -1,9 +1,8 @@
 package com.theladders.solid.isp.oldjob;
 
-import com.theladders.solid.isp.oldjob.fulldata.Company;
-import com.theladders.solid.isp.oldjob.fulldata.Compensation;
+import com.theladders.solid.isp.oldjob.fulldata.*;
 
-public class JobInfoComposite extends JobImpl
+public class JobInfoComposite extends JobImpl implements CompanyInfo
 {
   private final Company company;
   private final Compensation compensation;

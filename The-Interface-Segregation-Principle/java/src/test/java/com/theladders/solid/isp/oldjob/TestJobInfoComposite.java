@@ -17,7 +17,7 @@ public class TestJobInfoComposite
   
   private CompanyInfo company;
   private CompensationInfo compensation;
-  private BasicJob basicJob;
+  private BasicJobInfo basicJob;
   
   private void givenAJobInfoCompositeInstance()
   {
@@ -36,7 +36,7 @@ public class TestJobInfoComposite
   private void whenIDecompositeItIntoItsInterfaces() {
     company = (CompanyInfo)composite;
     compensation = (CompensationInfo)composite;
-    basicJob = (BasicJob)composite;
+    basicJob = (BasicJobInfo)composite;
   }
 
   @Before

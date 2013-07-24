@@ -8,13 +8,11 @@ public class JobInfoComposite extends JobImpl
 
   @Override
   public boolean isJobReq() {
-    // TODO Auto-generated method stub
     return false;
   }
 
   @Override
   public String getDescription() {
-    // TODO Auto-generated method stub
     return "";
   }
 }

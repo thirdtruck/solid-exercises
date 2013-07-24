@@ -60,4 +60,103 @@ public class JobInfoComposite extends JobImpl implements BasicJobInfo, CompanyIn
   public String getDescription() {
     return basicJob.getDescription();
   }
+  
+/*
+
+  @Override
+  public List<Discipline> getDisciplines() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Date getEntryDate() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Experience getExperience() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Industry getIndustry() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public String getLocation() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public int getOldJobId() {
+    // TODO Auto-generated method stub
+    return 0;
+  }
+
+  @Override
+  public Date getPublicationDate() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public Region getRegion() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public String getReportsTo() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public int getSubscriberId() {
+    // TODO Auto-generated method stub
+    return 0;
+  }
+
+  @Override
+  public String getTitle() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public boolean isAnonymous() {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  @Override
+  public boolean isConfidential() {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  @Override
+  public boolean isExclusive() {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  @Override
+  public boolean isReimbursable() {
+    // TODO Auto-generated method stub
+    return false;
+  }
+
+  @Override
+  public Date getUpdateTime() {
+    // TODO Auto-generated method stub
+    return null;
+  }
+*/
 }

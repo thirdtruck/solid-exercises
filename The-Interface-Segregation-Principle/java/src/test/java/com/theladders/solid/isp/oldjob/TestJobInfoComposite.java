@@ -21,13 +21,13 @@ public class TestJobInfoComposite
   
   private void givenAJobInfoCompositeInstance()
   {
-    BasicJob basicJob = new BasicJob(false, "A nice place to work!");
+    BasicJob aBasicJob = new BasicJob(false, "A nice place to work!");
     
-    Company company = new Company("Example Ltd.", companySize);
+    Company aCompany = new Company("Example Ltd.", companySize);
     
-    Compensation compensation = new Compensation("$100000/year", "$1000");
+    Compensation aCompensation = new Compensation("$100000/year", "$1000");
     
-    composite = new JobInfoComposite(basicJob, company, compensation);
+    composite = new JobInfoComposite(aBasicJob, aCompany, aCompensation);
   }
 
   private void whenISetTheDefaultValuesOnTheJobInfoComposite()

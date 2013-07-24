@@ -96,8 +96,6 @@ public class EnvSetupFilter
   }
 
   private void addHomeSiteURLs(Environment environment) {
-    SiteConfiguration r = new SiteConfiguration();
-    
     environment.put(SiteConfiguration.GUEST_SITE_HOME, environment.get("home"));
     environment.put(SiteConfiguration.SECURE_GUEST_SITE_HOME, environment.get("secureHome"));
     environment.put(SiteConfiguration.FALCON_SITE_HOME, environment.get("home"));

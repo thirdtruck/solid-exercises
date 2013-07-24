@@ -105,5 +105,23 @@ public class TestJobInfoComposite
   {
     assertEquals("Anywhere, USA", location.getLocation());
   }
+  
+  @Test
+  public void thenTheCompositeShouldHaveTheRightDefaultAnonymity()
+  {
+    assertFalse(composite.isAnonymous());
+  }
+  
+  @Test
+  public void thenTheCompositeShouldHaveTheRightDefaultConfidentiality()
+  {
+    assertFalse(composite.isConfidential());
+  }
+  
+  @Test
+  public void thenTheCompositeShouldHaveTheRightDefaultExclusivity()
+  {
+    assertFalse(composite.isExclusive());
+  }
 
 }

@@ -5,4 +5,8 @@ public interface CompensationInfo
   public String getCompensation();
   
   public String getCompensationBonus();
+  
+  public String getCompensationSalary();
+  
+  public String getCompensationOther();
 }

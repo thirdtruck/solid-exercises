@@ -13,9 +13,11 @@ public class TestJobInfoComposite
   
   private JobInfoComposite composite;
   
+  private final Integer companySize = new Integer(50);
+  
   private void givenAJobInfoCompositeInstance()
   {
-    Company company = new Company("Example Ltd.", new Integer(50));
+    Company company = new Company("Example Ltd.", companySize);
     composite = new JobInfoComposite(company);
   }
 
@@ -40,7 +42,7 @@ public class TestJobInfoComposite
   @Test
   public void thenItShouldHaveTheRightCompanySize()
   {
-    assertEquals(new Integer(50), composite.getCompanySize());
+    assertEquals(companySize, composite.getCompanySize());
   }
 
   @Test
@@ -48,7 +50,7 @@ public class TestJobInfoComposite
   {
     assertEquals("$100000/year", composite.getCompensation());
   }
-
+  
   @Test
   public void thenItShouldNotBeAJobReq()
   {

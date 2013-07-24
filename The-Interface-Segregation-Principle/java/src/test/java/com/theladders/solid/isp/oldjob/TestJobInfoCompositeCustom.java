@@ -8,7 +8,7 @@ import com.theladders.solid.isp.oldjob.JobInfoComposite;
 import com.theladders.solid.isp.oldjob.fulldata.*;
 
 
-public class TestJobInfoComposite
+public class TestJobInfoCompositeCustom
 {
   
   private JobInfoComposite composite;
@@ -104,24 +104,6 @@ public class TestJobInfoComposite
   public void thenTheLocationShouldHaveTheRightLocation()
   {
     assertEquals("Anywhere, USA", location.getLocation());
-  }
-  
-  @Test
-  public void thenTheCompositeShouldHaveTheRightDefaultAnonymity()
-  {
-    assertFalse(composite.isAnonymous());
-  }
-  
-  @Test
-  public void thenTheCompositeShouldHaveTheRightDefaultConfidentiality()
-  {
-    assertFalse(composite.isConfidential());
-  }
-  
-  @Test
-  public void thenTheCompositeShouldHaveTheRightDefaultExclusivity()
-  {
-    assertFalse(composite.isExclusive());
   }
 
 }

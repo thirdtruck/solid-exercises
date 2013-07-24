@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.theladders.solid.isp.oldjob.JobImpl;
 import com.theladders.solid.isp.oldjob.JobInfoComposite;
 
 

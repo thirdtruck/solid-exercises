@@ -26,7 +26,7 @@ public class TestJobInfoCompositeDefaults
     
     Location aLocation = new Location(null);
     
-    composite = new JobInfoComposite(aBasicJob, aCompany, aCompensation, aLocation);
+    composite = new JobInfoComposite(anAccessibility, aBasicJob, aCompany, aCompensation, aLocation);
   }
 
   private void whenISetTheDefaultValuesOnTheJobInfoComposite()

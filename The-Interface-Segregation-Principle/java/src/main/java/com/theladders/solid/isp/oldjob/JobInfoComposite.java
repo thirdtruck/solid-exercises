@@ -2,15 +2,17 @@ package com.theladders.solid.isp.oldjob;
 
 import com.theladders.solid.isp.oldjob.fulldata.*;
 
-public class JobInfoComposite extends JobImpl implements BasicJobInfo, CompanyInfo, CompensationInfo, LocationInfo
+public class JobInfoComposite extends JobImpl implements AccessibilityInfo, BasicJobInfo, CompanyInfo, CompensationInfo, LocationInfo
 {
+  private final Accessibility accessibility;
   private final Company company;
   private final Compensation compensation;
   private final BasicJob basicJob;
   private final Location location;
   
-  public JobInfoComposite(BasicJob basicJob, Company company, Compensation compensation, Location location)
+  public JobInfoComposite(Accessibility accessibility, BasicJob basicJob, Company company, Compensation compensation, Location location)
   {
+    this.accessibility = accessibility;
     this.basicJob = basicJob;
     this.company = company;
     this.compensation = compensation;
@@ -69,6 +71,24 @@ public class JobInfoComposite extends JobImpl implements BasicJobInfo, CompanyIn
   public String getLocation()
   {
     return location.getLocation();
+  }
+  
+  @Override
+  public boolean isAnonymous()
+  {
+    return accessibility.isAnonymous();
+  }
+  
+  @Override
+  public boolean isConfidential()
+  {
+    return accessibility.isConfidential();
+  }
+  
+  @Override
+  public boolean isExclusive()
+  {
+    return accessibility.isExclusive();
   }
   
 /*
@@ -131,24 +151,6 @@ public class JobInfoComposite extends JobImpl implements BasicJobInfo, CompanyIn
   public String getTitle() {
     // TODO Auto-generated method stub
     return null;
-  }
-
-  @Override
-  public boolean isAnonymous() {
-    // TODO Auto-generated method stub
-    return false;
-  }
-
-  @Override
-  public boolean isConfidential() {
-    // TODO Auto-generated method stub
-    return false;
-  }
-
-  @Override
-  public boolean isExclusive() {
-    // TODO Auto-generated method stub
-    return false;
   }
 
   @Override

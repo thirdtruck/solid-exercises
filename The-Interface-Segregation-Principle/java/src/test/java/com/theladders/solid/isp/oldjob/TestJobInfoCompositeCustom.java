@@ -23,6 +23,8 @@ public class TestJobInfoCompositeCustom
   
   private void givenAJobInfoCompositeInstance()
   {
+    Accessibility anAccessibility = new Accessibility(true, true, true);
+    
     BasicJob aBasicJob = new BasicJob(false, "A nice place to work!");
     
     Company aCompany = new Company("Example Ltd.", companySize);
@@ -31,7 +33,7 @@ public class TestJobInfoCompositeCustom
     
     Location aLocation = new Location("Anywhere, USA");
     
-    composite = new JobInfoComposite(aBasicJob, aCompany, aCompensation, aLocation);
+    composite = new JobInfoComposite(anAccessibility, aBasicJob, aCompany, aCompensation, aLocation);
   }
 
   private void whenISetTheDefaultValuesOnTheJobInfoComposite()

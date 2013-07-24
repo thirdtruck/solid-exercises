@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.theladders.solid.isp.oldjob.JobInfoComposite;
+import com.theladders.solid.isp.oldjob.fulldata.Company;
 
 
 public class TestJobInfoComposite
@@ -14,13 +15,12 @@ public class TestJobInfoComposite
   
   private void givenAJobInfoCompositeInstance()
   {
-    composite = new JobInfoComposite();
+    Company company = new Company("Example Ltd.", new Integer(50));
+    composite = new JobInfoComposite(company);
   }
 
   private void whenISetTheDefaultValuesOnTheJobInfoComposite()
   {
-    composite.setCompany("Example Ltd.");
-    composite.setCompanySize(new Integer(50));
     composite.setCompensation("$100000/year");
   }
 

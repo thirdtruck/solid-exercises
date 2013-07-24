@@ -22,6 +22,7 @@ public class TestJobInfoComposite
   {
     composite.setCompany("Example Ltd.");
     composite.setCompanySize(new Integer(50));
+    composite.setCompensation("$100000/year");
   }
 
   @Before
@@ -41,6 +42,12 @@ public class TestJobInfoComposite
   public void thenItShouldHaveTheRightCompanySize()
   {
     assertEquals(new Integer(50), composite.getCompanySize());
+  }
+
+  @Test
+  public void thenItShouldHaveTheRightCompensation()
+  {
+    assertEquals("$100000/year", composite.getCompensation());
   }
 
 }

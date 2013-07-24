@@ -91,18 +91,26 @@ public class EnvSetupFilter
       keyMap = new HashMap<>(insecurePropMap);
     }
 
-    Environment dynamicEnv = new DynamicEnvironment(baseEnv, keyMap);
-
-    new SiteConfiguration().seedEnvironment(dynamicEnv);
+    Environment securityConfiguredEnvironment = mergeInSecurityConfigurations(baseEnv, keyMap);
+    
+    new SiteConfiguration().seedEnvironment(securityConfiguredEnvironment);
 
     // Adds /member to site URLs if the user is logged in.
     if (loggedInUser)
     {
       /* Ensure site.home is member home */
-      dynamicEnv.put("home", dynamicEnv.get("home") + SiteConfiguration.MEMBER_PATH_PREFIX);
-      dynamicEnv.put("secureHome", dynamicEnv.get("secureHome") + SiteConfiguration.MEMBER_PATH_PREFIX);
+      securityConfiguredEnvironment.put("home", securityConfiguredEnvironment.get("home") + SiteConfiguration.MEMBER_PATH_PREFIX);
+      securityConfiguredEnvironment.put("secureHome", securityConfiguredEnvironment.get("secureHome") + SiteConfiguration.MEMBER_PATH_PREFIX);
     }
 
-    return dynamicEnv;
+    return securityConfiguredEnvironment;
+  }
+
+  private Environment mergeInSecurityConfigurations(Environment baseEnv,
+      Map<String, String> keyMap) {
+    Environment securityConfiguredEnvironment = new Environment();
+    securityConfiguredEnvironment.putAll(baseEnv);
+    securityConfiguredEnvironment.putAll(keyMap);
+    return securityConfiguredEnvironment;
   }
 }

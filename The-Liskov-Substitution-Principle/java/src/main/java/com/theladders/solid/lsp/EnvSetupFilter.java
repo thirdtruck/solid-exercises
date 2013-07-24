@@ -91,7 +91,8 @@ public class EnvSetupFilter
       keyMap = new HashMap<>(insecurePropMap);
     }
 
-    Environment securityConfiguredEnvironment = mergeInSecurityConfigurations(baseEnv, keyMap);
+    Environment securityConfiguredEnvironment = mergeInSecurityConfigurations(
+        baseEnv, keyMap);
     
     new SiteConfiguration().seedEnvironment(securityConfiguredEnvironment);
 

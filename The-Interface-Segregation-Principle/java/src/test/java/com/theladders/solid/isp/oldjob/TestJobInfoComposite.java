@@ -1,3 +1,4 @@
+package com.theladders.solid.isp.oldjob;
 import static org.junit.Assert.*;
 
 import org.junit.Before;

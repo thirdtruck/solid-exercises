@@ -38,6 +38,18 @@ public class JobInfoComposite extends JobImpl implements BasicJobInfo, CompanyIn
   {
     return compensation.getBonus();
   }
+  
+  @Override
+  public String getCompensationSalary()
+  {
+    return compensation.getSalary();
+  }
+  
+  @Override
+  public String getCompensationOther()
+  {
+    return compensation.getOther();
+  }
 
   @Override
   public boolean isJobReq() {

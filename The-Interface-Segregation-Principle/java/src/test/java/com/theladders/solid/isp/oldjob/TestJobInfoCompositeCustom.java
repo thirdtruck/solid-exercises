@@ -1,11 +1,15 @@
 package com.theladders.solid.isp.oldjob;
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import com.theladders.solid.isp.oldjob.JobInfoComposite;
 import com.theladders.solid.isp.oldjob.fulldata.*;
+import com.theladders.solid.isp.oldjob.stubs.Discipline;
 
 
 public class TestJobInfoCompositeCustom
@@ -21,6 +25,9 @@ public class TestJobInfoCompositeCustom
   private BasicJobInfo basicJob;
   private LocationInfo location;
   
+  private Discipline aDiscipline;
+  private List<Discipline> aDisciplineList;
+  
   private void givenAJobInfoCompositeInstance()
   {
     Accessibility anAccessibility = new Accessibility(true, true, true);
@@ -33,11 +40,16 @@ public class TestJobInfoCompositeCustom
     
     Location aLocation = new Location("Anywhere, USA");
     
+    aDiscipline = new Discipline();
+    aDisciplineList = new ArrayList<Discipline>();
+    aDisciplineList.add(aDiscipline);
+    
     composite = new JobInfoComposite(anAccessibility, aBasicJob, aCompany, aCompensation, aLocation);
   }
 
   private void whenISetTheDefaultValuesOnTheJobInfoComposite()
   {
+    composite.setDisciplines(aDisciplineList);
   }
   
   private void whenIDecompositeItIntoItsInterfaces()
@@ -127,6 +139,12 @@ public class TestJobInfoCompositeCustom
   public void thenTheAccessibilityShouldHaveTheRightExclusivity()
   {
     assertTrue(accessibility.isExclusive());
+  }
+  
+  @Test
+  public void thenTheCompositeShouldHaveTheRightDisciplineList()
+  {
+    assertTrue(aDisciplineList.equals(composite.getDisciplines()));
   }
 
 }

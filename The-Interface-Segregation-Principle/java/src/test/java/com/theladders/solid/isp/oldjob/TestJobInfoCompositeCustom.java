@@ -20,9 +20,9 @@ public class TestJobInfoCompositeCustom
   private final Integer companySize = new Integer(50);
 
   private AccessibilityInfo accessibility;
+  private BasicJobInfo basicJob;
   private CompanyInfo company;
   private CompensationInfo compensation;
-  private BasicJobInfo basicJob;
   private DisciplineListInfo disciplines;
   private LocationInfo location;
   
@@ -39,11 +39,11 @@ public class TestJobInfoCompositeCustom
     
     Compensation aCompensation = new Compensation("Annual", "$1000", "$100000", "Other");
     
-    Location aLocation = new Location("Anywhere, USA");
-    
     aDiscipline = new Discipline();
     aDisciplineList = new ArrayList<Discipline>();
     aDisciplineList.add(aDiscipline);
+    
+    Location aLocation = new Location("Anywhere, USA");
     
     composite = new JobInfoComposite(anAccessibility, aBasicJob, aCompany, aCompensation, aDisciplineList, aLocation);
   }
@@ -54,12 +54,12 @@ public class TestJobInfoCompositeCustom
   
   private void whenIDecompositeItIntoItsInterfaces()
   {
+    accessibility = (AccessibilityInfo)composite;
+    basicJob = (BasicJobInfo)composite;
     company = (CompanyInfo)composite;
     compensation = (CompensationInfo)composite;
-    basicJob = (BasicJobInfo)composite;
     disciplines = (DisciplineListInfo)composite;
     location = (LocationInfo)composite;
-    accessibility = (AccessibilityInfo)composite;
   }
 
   @Before

@@ -23,6 +23,7 @@ public class TestJobInfoCompositeCustom
   private CompanyInfo company;
   private CompensationInfo compensation;
   private BasicJobInfo basicJob;
+  private DisciplineListInfo disciplines;
   private LocationInfo location;
   
   private Discipline aDiscipline;
@@ -44,12 +45,11 @@ public class TestJobInfoCompositeCustom
     aDisciplineList = new ArrayList<Discipline>();
     aDisciplineList.add(aDiscipline);
     
-    composite = new JobInfoComposite(anAccessibility, aBasicJob, aCompany, aCompensation, aLocation);
+    composite = new JobInfoComposite(anAccessibility, aBasicJob, aCompany, aCompensation, aDisciplineList, aLocation);
   }
 
   private void whenISetTheDefaultValuesOnTheJobInfoComposite()
   {
-    composite.setDisciplines(aDisciplineList);
   }
   
   private void whenIDecompositeItIntoItsInterfaces()
@@ -57,6 +57,7 @@ public class TestJobInfoCompositeCustom
     company = (CompanyInfo)composite;
     compensation = (CompensationInfo)composite;
     basicJob = (BasicJobInfo)composite;
+    disciplines = (DisciplineListInfo)composite;
     location = (LocationInfo)composite;
     accessibility = (AccessibilityInfo)composite;
   }

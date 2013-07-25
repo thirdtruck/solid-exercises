@@ -13,9 +13,9 @@ public class TestApp
   }
 
   @Test
-  private void thenIShouldBeAbleToRunTheApp()
+  private void thenIShouldBeAbleToInitializeTheApp()
   {
-    App.runApp();
+    App anApp = new App();
   }
 
 }

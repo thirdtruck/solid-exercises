@@ -24,6 +24,7 @@ public class TestJobInfoCompositeCustom
   private CompanyInfo company;
   private CompensationInfo compensation;
   private DisciplineListInfo disciplines;
+  private ExperienceInfo experience;
   private LocationInfo location;
   
   private Discipline aDiscipline;
@@ -48,12 +49,11 @@ public class TestJobInfoCompositeCustom
     
     Location aLocation = new Location("Anywhere, USA");
     
-    composite = new JobInfoComposite(anAccessibility, aBasicJob, aCompany, aCompensation, aDisciplineList, aLocation);
+    composite = new JobInfoComposite(anAccessibility, aBasicJob, aCompany, aCompensation, aDisciplineList, anExperience, aLocation);
   }
 
   private void whenISetTheDefaultValuesOnTheJobInfoComposite()
   {
-    composite.setExperience(anExperience);
   }
   
   private void whenIDecompositeItIntoItsInterfaces()
@@ -63,6 +63,7 @@ public class TestJobInfoCompositeCustom
     company = (CompanyInfo)composite;
     compensation = (CompensationInfo)composite;
     disciplines = (DisciplineListInfo)composite;
+    experience = (ExperienceInfo)composite;
     location = (LocationInfo)composite;
   }
 
@@ -153,9 +154,9 @@ public class TestJobInfoCompositeCustom
   }
   
   @Test
-  public void thenTheCompositeShouldHaveTheRightExperience()
+  public void thenTheExperienceShouldHaveTheRightExperience()
   {
-    assertTrue(composite.getExperience().equals(anExperience));
+    assertTrue(experience.getExperience().equals(anExperience));
   }
 
 }

@@ -8,30 +8,43 @@ import com.theladders.solid.isp.oldjob.stubs.*;
 
 public class App
 {
+  private Integer companySize;
+  private Accessibility anAccessibility;
+  private BasicJob aBasicJob;
+  private Company aCompany;
+  private Compensation aCompensation;
+  private List<Discipline> aDisciplineList;
+  private Experience anExperience;
+  private Location aLocation;
+  private JobInfoComposite composite;
   
-  public static void runApp()
+  public App()
   {
-    Integer companySize = new Integer(50);
+    companySize = new Integer(50);
     
-    Accessibility anAccessibility = new Accessibility(true, true, true);
+    anAccessibility = new Accessibility(true, true, true);
     
-    BasicJob aBasicJob = new BasicJob(false, "A nice place to work!");
+    aBasicJob = new BasicJob(false, "A nice place to work!");
     
-    Company aCompany = new Company("Example Ltd.", companySize);
+    aCompany = new Company("Example Ltd.", companySize);
     
-    Compensation aCompensation = new Compensation("Annual", "$1000", "$100000", "Other");
+    aCompensation = new Compensation("Annual", "$1000", "$100000", "Other");
     
-    List<Discipline> aDisciplineList = new ArrayList<Discipline>();
+    aDisciplineList = new ArrayList<Discipline>();
     
-    Experience anExperience = new Experience();
+    anExperience = new Experience();
     
-    Location aLocation = new Location("Anywhere, USA");
+    aLocation = new Location("Anywhere, USA");
     
-    JobInfoComposite composite = new JobInfoComposite(anAccessibility, aBasicJob, aCompany, aCompensation, aDisciplineList, anExperience, aLocation);
+    composite = new JobInfoComposite(anAccessibility, aBasicJob, aCompany, aCompensation, aDisciplineList, anExperience, aLocation);
     
     // AccessibilityController acessibilityController = new AccessibilityController(accessibilityView, (AccessibilityInfo)composite);
     // LocationController LocationController = new LocationController(locationSettingView, (LocationInfo)composite);
-    
+  }
+  
+  public static void runApp()
+  {
+    App anApp = new App();
   }
 
   public static void main(String[] args)

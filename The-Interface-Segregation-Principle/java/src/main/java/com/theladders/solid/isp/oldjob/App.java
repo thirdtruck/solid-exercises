@@ -1,10 +1,10 @@
 package com.theladders.solid.isp.oldjob;
 
-import com.theladders.solid.isp.oldjob.fulldata.Accessibility;
-import com.theladders.solid.isp.oldjob.fulldata.BasicJob;
-import com.theladders.solid.isp.oldjob.fulldata.Company;
-import com.theladders.solid.isp.oldjob.fulldata.Compensation;
-import com.theladders.solid.isp.oldjob.fulldata.Location;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.theladders.solid.isp.oldjob.fulldata.*;
+import com.theladders.solid.isp.oldjob.stubs.*;
 
 public class App
 {
@@ -21,9 +21,13 @@ public class App
     
     Compensation aCompensation = new Compensation("Annual", "$1000", "$100000", "Other");
     
+    List<Discipline> aDisciplineList = new ArrayList<Discipline>();
+    
+    Experience anExperience = new Experience();
+    
     Location aLocation = new Location("Anywhere, USA");
     
-    JobInfoComposite composite = new JobInfoComposite(anAccessibility, aBasicJob, aCompany, aCompensation, aLocation);
+    JobInfoComposite composite = new JobInfoComposite(anAccessibility, aBasicJob, aCompany, aCompensation, aDisciplineList, anExperience, aLocation);
     
     // AccessibilityController acessibilityController = new AccessibilityController(accessibilityView, (AccessibilityInfo)composite);
     // LocationController LocationController = new LocationController(locationSettingView, (LocationInfo)composite);

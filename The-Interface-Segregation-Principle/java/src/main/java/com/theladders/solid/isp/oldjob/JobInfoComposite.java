@@ -1,21 +1,26 @@
 package com.theladders.solid.isp.oldjob;
 
-import com.theladders.solid.isp.oldjob.fulldata.*;
+import java.util.List;
 
-public class JobInfoComposite extends JobImpl implements AccessibilityInfo, BasicJobInfo, CompanyInfo, CompensationInfo, LocationInfo
+import com.theladders.solid.isp.oldjob.fulldata.*;
+import com.theladders.solid.isp.oldjob.stubs.Discipline;
+
+public class JobInfoComposite extends JobImpl implements AccessibilityInfo, BasicJobInfo, CompanyInfo, CompensationInfo, DisciplineListInfo, LocationInfo
 {
   private final Accessibility accessibility;
   private final Company company;
   private final Compensation compensation;
   private final BasicJob basicJob;
+  private final List<Discipline> disciplineList;
   private final Location location;
   
-  public JobInfoComposite(Accessibility accessibility, BasicJob basicJob, Company company, Compensation compensation, Location location)
+  public JobInfoComposite(Accessibility accessibility, BasicJob basicJob, Company company, Compensation compensation, List<Discipline> disciplineList, Location location)
   {
     this.accessibility = accessibility;
     this.basicJob = basicJob;
     this.company = company;
     this.compensation = compensation;
+    this.disciplineList = disciplineList;
     this.location = location;
   }
   
@@ -90,14 +95,13 @@ public class JobInfoComposite extends JobImpl implements AccessibilityInfo, Basi
   {
     return accessibility.isExclusive();
   }
-  
-/*
 
   @Override
   public List<Discipline> getDisciplines() {
-    // TODO Auto-generated method stub
-    return null;
+    return disciplineList;
   }
+  
+/*
 
   @Override
   public Date getEntryDate() {

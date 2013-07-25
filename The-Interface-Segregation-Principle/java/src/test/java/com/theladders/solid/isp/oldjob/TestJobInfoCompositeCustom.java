@@ -143,9 +143,9 @@ public class TestJobInfoCompositeCustom
   }
   
   @Test
-  public void thenTheCompositeShouldHaveTheRightDisciplineList()
+  public void thenTheDisciplinesShouldHaveTheRightDisciplineList()
   {
-    assertTrue(aDisciplineList.equals(composite.getDisciplines()));
+    assertTrue(aDisciplineList.equals(disciplines.getDisciplines()));
   }
 
 }

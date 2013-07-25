@@ -13,7 +13,7 @@ public class TestApp
   }
 
   @Test
-  private void thenIShouldBeAbleToInitializeTheApp()
+  public void thenIShouldBeAbleToInitializeTheApp()
   {
     App anApp = new App();
   }

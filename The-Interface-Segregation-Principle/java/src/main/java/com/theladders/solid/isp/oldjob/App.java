@@ -9,7 +9,7 @@ import com.theladders.solid.isp.oldjob.stubs.*;
 public class App
 {
   
-  private static void runApp()
+  public static void runApp()
   {
     Integer companySize = new Integer(50);
     

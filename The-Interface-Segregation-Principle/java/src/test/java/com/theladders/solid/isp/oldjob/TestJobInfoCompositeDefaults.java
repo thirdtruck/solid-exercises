@@ -1,11 +1,15 @@
 package com.theladders.solid.isp.oldjob;
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import com.theladders.solid.isp.oldjob.JobInfoComposite;
 import com.theladders.solid.isp.oldjob.fulldata.*;
+import com.theladders.solid.isp.oldjob.stubs.*;
 
 
 public class TestJobInfoCompositeDefaults
@@ -24,9 +28,11 @@ public class TestJobInfoCompositeDefaults
     
     Compensation aCompensation = new Compensation(null, null, null, null);
     
+    List<Discipline> aDisciplineList = new ArrayList<Discipline>();
+    
     Location aLocation = new Location(null);
     
-    composite = new JobInfoComposite(anAccessibility, aBasicJob, aCompany, aCompensation, aLocation);
+    composite = new JobInfoComposite(anAccessibility, aBasicJob, aCompany, aCompensation, aDisciplineList, aLocation);
   }
 
   private void whenISetTheDefaultValuesOnTheJobInfoComposite()

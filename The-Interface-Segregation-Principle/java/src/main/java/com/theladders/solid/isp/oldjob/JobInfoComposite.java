@@ -8,9 +8,9 @@ import com.theladders.solid.isp.oldjob.stubs.Discipline;
 public class JobInfoComposite extends JobImpl implements AccessibilityInfo, BasicJobInfo, CompanyInfo, CompensationInfo, DisciplineListInfo, LocationInfo
 {
   private final Accessibility accessibility;
+  private final BasicJob basicJob;
   private final Company company;
   private final Compensation compensation;
-  private final BasicJob basicJob;
   private final List<Discipline> disciplineList;
   private final Location location;
   

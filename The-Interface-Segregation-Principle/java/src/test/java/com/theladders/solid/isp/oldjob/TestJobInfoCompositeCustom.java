@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import com.theladders.solid.isp.oldjob.JobInfoComposite;
 import com.theladders.solid.isp.oldjob.fulldata.*;
-import com.theladders.solid.isp.oldjob.stubs.Discipline;
+import com.theladders.solid.isp.oldjob.stubs.*;
 
 
 public class TestJobInfoCompositeCustom
@@ -28,6 +28,7 @@ public class TestJobInfoCompositeCustom
   
   private Discipline aDiscipline;
   private List<Discipline> aDisciplineList;
+  private Experience anExperience;
   
   private void givenAJobInfoCompositeInstance()
   {
@@ -43,6 +44,8 @@ public class TestJobInfoCompositeCustom
     aDisciplineList = new ArrayList<Discipline>();
     aDisciplineList.add(aDiscipline);
     
+    anExperience = new Experience();
+    
     Location aLocation = new Location("Anywhere, USA");
     
     composite = new JobInfoComposite(anAccessibility, aBasicJob, aCompany, aCompensation, aDisciplineList, aLocation);
@@ -50,6 +53,7 @@ public class TestJobInfoCompositeCustom
 
   private void whenISetTheDefaultValuesOnTheJobInfoComposite()
   {
+    composite.setExperience(anExperience);
   }
   
   private void whenIDecompositeItIntoItsInterfaces()
@@ -146,6 +150,12 @@ public class TestJobInfoCompositeCustom
   public void thenTheDisciplinesShouldHaveTheRightDisciplineList()
   {
     assertTrue(aDisciplineList.equals(disciplines.getDisciplines()));
+  }
+  
+  @Test
+  public void thenTheCompositeShouldHaveTheRightExperience()
+  {
+    assertTrue(composite.getExperience().equals(anExperience));
   }
 
 }

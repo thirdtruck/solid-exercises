@@ -38,9 +38,6 @@ public class TestJobInfoCompositeCustom
 
   private void whenISetTheDefaultValuesOnTheJobInfoComposite()
   {
-    composite.setAnonymous(true);
-    composite.setConfidential(true);
-    composite.setExclusive(true);
   }
   
   private void whenIDecompositeItIntoItsInterfaces()

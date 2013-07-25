@@ -18,6 +18,9 @@ public class App
   private Location aLocation;
   private JobInfoComposite composite;
   
+  private AccessibilityController accessibilityController;
+  private LocationController locationController;
+  
   public App()
   {
     companySize = new Integer(50);
@@ -38,8 +41,11 @@ public class App
     
     composite = new JobInfoComposite(anAccessibility, aBasicJob, aCompany, aCompensation, aDisciplineList, anExperience, aLocation);
     
-    // AccessibilityController acessibilityController = new AccessibilityController(accessibilityView, (AccessibilityInfo)composite);
-    // LocationController LocationController = new LocationController(locationSettingView, (LocationInfo)composite);
+    Object accessibilityView = new Object(); // TODO: stub
+    Object locationView = new Object(); // TODO: stub
+    
+    accessibilityController = new AccessibilityController(accessibilityView, (AccessibilityInfo)composite);
+    locationController = new LocationController(locationView, (LocationInfo)composite);
   }
   
   public static void runApp()

@@ -28,6 +28,8 @@ public class TestJobInfoCompositeDefaults
     
     Compensation aCompensation = new Compensation(null, null, null, null);
     
+    Experience anExperience = new Experience();
+    
     List<Discipline> aDisciplineList = new ArrayList<Discipline>();
     
     Location aLocation = new Location(null);

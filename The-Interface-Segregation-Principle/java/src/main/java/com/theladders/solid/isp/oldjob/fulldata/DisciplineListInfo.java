@@ -4,5 +4,5 @@ import java.util.List;
 import com.theladders.solid.isp.oldjob.stubs.Discipline;
 
 public interface DisciplineListInfo {
-  public List<Discipline> disciplines();
+  public List<Discipline> getDisciplines();
 }

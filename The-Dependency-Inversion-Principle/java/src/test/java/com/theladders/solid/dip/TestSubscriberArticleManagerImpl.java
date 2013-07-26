@@ -69,7 +69,7 @@ public class TestSubscriberArticleManagerImpl
 
   public void givenAManager()
   {
-    repository = new SuggestedArticleDao();
+    repository = new InMemorySuggestedArticleRepository();
     repositoryManager = new RepositoryManager();
     subscriberArticleManager = new SubscriberArticleManagerImpl(repository, repositoryManager);
   }

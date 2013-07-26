@@ -4,23 +4,35 @@ import java.util.*;
 
 public class SuggestedArticleDao
 {
-  private Map<Integer, SuggestedArticle> articlesBySubscriberId;
+  private Map<Integer, List<SuggestedArticle>> articlesBySubscriberId;
   
   public SuggestedArticleDao()
   {
-    articlesBySubscriberId = new HashMap<Integer, SuggestedArticle>();
+    articlesBySubscriberId = new HashMap<Integer, List<SuggestedArticle>>();
   }
   
   public void updateByPrimaryKeySelective(@SuppressWarnings("unused") SuggestedArticle article) {}
 
   public int insertReturnId(@SuppressWarnings("unused") SuggestedArticle suggestedArticle)
   {
-    articlesBySubscriberId.put(suggestedArticle.getSubscriberId(), suggestedArticle);
+    Integer subscriberId = suggestedArticle.getSubscriberId();
+    List<SuggestedArticle> articles = articlesBySubscriberId.get(subscriberId);
+    if(articles == null)
+    {
+      articles = new ArrayList<SuggestedArticle>();
+    }
+    articles.add(suggestedArticle);
+    articlesBySubscriberId.put(subscriberId, articles);
     return 0;
   }
 
   public List<SuggestedArticle> selectByExampleWithBlobs(@SuppressWarnings("unused") SuggestedArticleExample criteria)
   {
-    return new ArrayList<SuggestedArticle>(articlesBySubscriberId.values());
+    ArrayList<SuggestedArticle> filteredArticles = new ArrayList<SuggestedArticle>();
+    for(List<SuggestedArticle>articles : articlesBySubscriberId.values())
+    {
+      filteredArticles.addAll(articles);
+    }
+    return filteredArticles;
   }
 }

@@ -18,20 +18,20 @@ public class TestSubscriberArticleManagerImpl
   public void testGettingAnArticle()
   {
     givenAManager();
-    thenICanGetTheArticleSuggestedForASubscriber();
+    thenICanGetTheRightNumberOfArticlesSuggestedForASubscriber(1);
   }
-  
+
   public void givenAManager()
   {
     dao = new SuggestedArticleDao();
     repositoryManager = new RepositoryManager();
     subscriberArticleManager = new SubscriberArticleManagerImpl(dao, repositoryManager);
   }
-
-  public void thenICanGetTheArticleSuggestedForASubscriber()
+  
+  public void thenICanGetTheRightNumberOfArticlesSuggestedForASubscriber(int articleCount)
   {
     List<SuggestedArticle> articles = subscriberArticleManager.getArticlesbySubscriber(0);
-    assertEquals(1, articles.size());
+    assertEquals(articleCount, articles.size());
   }
   
   @Before

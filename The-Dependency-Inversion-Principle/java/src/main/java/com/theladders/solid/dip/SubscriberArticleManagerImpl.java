@@ -23,13 +23,13 @@ public class SubscriberArticleManagerImpl implements SubscriberArticleManager
     CATEGORY_IMAGE_MAP.put("On the Job", "salary_thumb.jpg");
   }
 
-  private SuggestedArticleDao              suggestedArticleDao;
+  private SuggestedArticleRepository       suggestedArticleRepository;
   private RepositoryManager                repositoryManager;
 
-  public SubscriberArticleManagerImpl(SuggestedArticleDao suggestedArticleDao,
+  public SubscriberArticleManagerImpl(SuggestedArticleRepository suggestedArticleRepository,
                                       RepositoryManager repositoryManager)
   {
-    this.suggestedArticleDao = suggestedArticleDao;
+    this.suggestedArticleRepository = suggestedArticleRepository;
     this.repositoryManager = repositoryManager;
   }
 
@@ -42,7 +42,7 @@ public class SubscriberArticleManagerImpl implements SubscriberArticleManager
             .andSuggestedArticleSourceIdEqualTo(1);
 
     criteria.setOrderByClause("create_time desc");
-    List<SuggestedArticle> dbSuggestions = this.suggestedArticleDao.selectByExampleWithBlobs(criteria);
+    List<SuggestedArticle> dbSuggestions = this.suggestedArticleRepository.fetchArticlesByCriteria(criteria);
 
     // Fetch content associated with SuggestedArticle (based on externalArticleId)
     resolveArticles(dbSuggestions);
@@ -58,7 +58,7 @@ public class SubscriberArticleManagerImpl implements SubscriberArticleManager
     suggestedArticle.setSuggestedArticleSourceId(HTP_CONSULTANT);
     suggestedArticle.setCreateTime(new Date()); // current date
     suggestedArticle.setUpdateTime(new Date()); // current date
-    int newId = suggestedArticleDao.insertReturnId(suggestedArticle);
+    int newId = suggestedArticleRepository.addArticle(suggestedArticle);
     return newId;
   }
 
@@ -94,7 +94,7 @@ public class SubscriberArticleManagerImpl implements SubscriberArticleManager
     SuggestedArticle article = new SuggestedArticle();
     article.setSuggestedArticleId(id);
     article.setNote(note);
-    suggestedArticleDao.updateByPrimaryKeySelective(article);
+    suggestedArticleRepository.updateArticle(article);
   }
 
   public void markRecomDeleted(Integer id)
@@ -103,6 +103,6 @@ public class SubscriberArticleManagerImpl implements SubscriberArticleManager
     SuggestedArticle article = new SuggestedArticle();
     article.setSuggestedArticleId(id);
     article.setSuggestedArticleStatusId(STATUS_DELETED);
-    suggestedArticleDao.updateByPrimaryKeySelective(article);
+    suggestedArticleRepository.updateArticle(article);
   }
 }

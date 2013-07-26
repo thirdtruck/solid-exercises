@@ -2,21 +2,41 @@ package com.theladders.solid.dip;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
 public class TestSubscriberArticleManagerImpl
 {
 
-  @Before
-  public void setUp()
+  private SuggestedArticleDao dao;
+  private RepositoryManager repositoryManager;
+  private SubscriberArticleManagerImpl subscriberArticleManager;
+  
+  @Test
+  public void testGettingAnArticle()
   {
+    givenAManager();
+    thenICanGetTheArticleSuggestedForASubscriber();
+  }
+  
+  public void givenAManager()
+  {
+    dao = new SuggestedArticleDao();
+    repositoryManager = new RepositoryManager();
+    subscriberArticleManager = new SubscriberArticleManagerImpl(dao, repositoryManager);
   }
 
-  @Test
-  public void test()
+  public void thenICanGetTheArticleSuggestedForASubscriber()
   {
-    fail("Not yet implemented");
+    List<SuggestedArticle> articles = subscriberArticleManager.getArticlesbySubscriber(0);
+    assertEquals(1, articles.size());
+  }
+  
+  @Before
+  public void setup()
+  {
   }
 
 }

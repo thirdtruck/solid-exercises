@@ -20,12 +20,26 @@ public class TestSubscriberArticleManagerImpl
     givenAManager();
     thenICanGetTheRightNumberOfArticlesSuggestedForASubscriber(1);
   }
+  
+  @Test
+  public void testAddingAndThenGettingArticles()
+  {
+    givenAManager();
+    whenIAddASuggestedArticleForASubscriber();
+    thenICanGetTheRightNumberOfArticlesSuggestedForASubscriber(2);
+  }
 
   public void givenAManager()
   {
     dao = new SuggestedArticleDao();
     repositoryManager = new RepositoryManager();
     subscriberArticleManager = new SubscriberArticleManagerImpl(dao, repositoryManager);
+  }
+  
+  private void whenIAddASuggestedArticleForASubscriber()
+  {
+    SuggestedArticle article = new SuggestedArticle();
+    subscriberArticleManager.addSuggestedArticle(article);
   }
   
   public void thenICanGetTheRightNumberOfArticlesSuggestedForASubscriber(int articleCount)

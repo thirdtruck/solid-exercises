@@ -9,16 +9,17 @@ import org.junit.Test;
 
 public class TestSubscriberArticleManagerImpl
 {
+  private final Integer subscriberId = new Integer(1);
 
   private SuggestedArticleDao dao;
   private RepositoryManager repositoryManager;
   private SubscriberArticleManagerImpl subscriberArticleManager;
   
   @Test
-  public void testGettingAnArticle()
+  public void testGettingAnArticleFromANewManager()
   {
     givenAManager();
-    thenICanGetTheRightNumberOfArticlesSuggestedForASubscriber(1);
+    thenICanGetTheRightNumberOfArticlesSuggestedForASubscriber(0);
   }
   
   @Test
@@ -26,7 +27,7 @@ public class TestSubscriberArticleManagerImpl
   {
     givenAManager();
     whenIAddASuggestedArticleForASubscriber();
-    thenICanGetTheRightNumberOfArticlesSuggestedForASubscriber(2);
+    thenICanGetTheRightNumberOfArticlesSuggestedForASubscriber(1);
   }
 
   public void givenAManager()
@@ -38,13 +39,20 @@ public class TestSubscriberArticleManagerImpl
   
   private void whenIAddASuggestedArticleForASubscriber()
   {
-    SuggestedArticle article = new SuggestedArticle();
+    String articleExternalIdentifier = "An Identifier";
+    String note = "Blank Note";
+    Integer adminUserId = new Integer(999);
+    
+    SuggestedArticle article = new SuggestedArticle(subscriberId,
+                                                    articleExternalIdentifier,
+                                                    note,
+                                                    adminUserId);
     subscriberArticleManager.addSuggestedArticle(article);
   }
   
   public void thenICanGetTheRightNumberOfArticlesSuggestedForASubscriber(int articleCount)
   {
-    List<SuggestedArticle> articles = subscriberArticleManager.getArticlesbySubscriber(0);
+    List<SuggestedArticle> articles = subscriberArticleManager.getArticlesbySubscriber(subscriberId);
     assertEquals(articleCount, articles.size());
   }
   

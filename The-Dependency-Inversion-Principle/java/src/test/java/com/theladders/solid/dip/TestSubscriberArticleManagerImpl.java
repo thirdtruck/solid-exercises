@@ -11,7 +11,7 @@ public class TestSubscriberArticleManagerImpl
 {
   private final Integer subscriberId = new Integer(1);
 
-  private SuggestedArticleDao dao;
+  private SuggestedArticleRepository repository;
   private RepositoryManager repositoryManager;
   private SubscriberArticleManagerImpl subscriberArticleManager;
   
@@ -69,9 +69,9 @@ public class TestSubscriberArticleManagerImpl
 
   public void givenAManager()
   {
-    dao = new SuggestedArticleDao();
+    repository = new SuggestedArticleDao();
     repositoryManager = new RepositoryManager();
-    subscriberArticleManager = new SubscriberArticleManagerImpl(dao, repositoryManager);
+    subscriberArticleManager = new SubscriberArticleManagerImpl(repository, repositoryManager);
   }
   
   private void whenIAddASuggestedArticleForASubscriber()

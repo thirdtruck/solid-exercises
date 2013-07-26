@@ -2,7 +2,7 @@ package com.theladders.solid.dip;
 
 import java.util.*;
 
-public class SuggestedArticleDao
+public class SuggestedArticleDao implements SuggestedArticleRepository
 {
   private Map<Integer, List<SuggestedArticle>> articlesBySubscriberId;
   
@@ -26,7 +26,7 @@ public class SuggestedArticleDao
     return 0;
   }
 
-  public List<SuggestedArticle> selectByExampleWithBlobs(@SuppressWarnings("unused") SuggestedArticleExample criteria)
+  public List<SuggestedArticle> selectByExampleWithBlobs(@SuppressWarnings("unused") SuggestedArticleSearchCriteria criteria)
   {
     ArrayList<SuggestedArticle> filteredArticles = new ArrayList<SuggestedArticle>();
     for(List<SuggestedArticle>articles : articlesBySubscriberId.values())
@@ -34,5 +34,23 @@ public class SuggestedArticleDao
       filteredArticles.addAll(articles);
     }
     return filteredArticles;
+  }
+
+  @Override
+  public int addArticle(SuggestedArticle article)
+  {
+    return insertReturnId(article);
+  }
+
+  @Override
+  public List<SuggestedArticle> fetchArticlesByCriteria(SuggestedArticleSearchCriteria criteria)
+  {
+    return selectByExampleWithBlobs(criteria);
+  }
+
+  @Override
+  public void updateArticle(SuggestedArticle article)
+  {
+    updateByPrimaryKeySelective(article);
   }
 }

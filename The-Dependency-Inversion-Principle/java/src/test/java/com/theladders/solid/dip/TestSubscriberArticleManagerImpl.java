@@ -29,6 +29,15 @@ public class TestSubscriberArticleManagerImpl
     whenIAddASuggestedArticleForASubscriber();
     thenICanGetTheRightNumberOfArticlesSuggestedForASubscriber(1);
   }
+  
+  @Test
+  public void testAddingAndThenGettingMultipleArticles()
+  {
+    givenAManager();
+    whenIAddASuggestedArticleForASubscriber();
+    whenIAddASuggestedArticleForASubscriber();
+    thenICanGetTheRightNumberOfArticlesSuggestedForASubscriber(2);
+  }
 
   public void givenAManager()
   {

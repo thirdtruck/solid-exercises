@@ -15,6 +15,25 @@ public class TestSubscriberArticleManagerImpl
   private RepositoryManager repositoryManager;
   private SubscriberArticleManagerImpl subscriberArticleManager;
   
+  private enum ArticleStatus
+  {
+    NEW(1),
+    VIEWED(2),
+    READ(3); // TODO: Find actual ID for non-new, non-viewed statuses.
+    
+    private final int statusId;
+    
+    private ArticleStatus(int statusId)
+    {
+      this.statusId = statusId;
+    }
+    
+    public int id()
+    {
+      return this.statusId;
+    }
+  }
+  
   @Test
   public void testGettingAnArticleFromANewManager()
   {
@@ -38,6 +57,15 @@ public class TestSubscriberArticleManagerImpl
     whenIAddASuggestedArticleForASubscriber();
     thenICanGetTheRightNumberOfArticlesSuggestedForASubscriber(2);
   }
+  
+  @Test
+  public void testGettingOnlyNewOrViewedArticles()
+  {
+    givenAManager();
+    whenIAddASuggestedArticleForASubscriber();
+    whenIAddASuggestedButNotNewOrViewedArticle();
+    thenICanGetTheRightNumberOfArticlesSuggestedForASubscriber(1);
+  }
 
   public void givenAManager()
   {
@@ -56,6 +84,21 @@ public class TestSubscriberArticleManagerImpl
                                                     articleExternalIdentifier,
                                                     note,
                                                     adminUserId);
+    subscriberArticleManager.addSuggestedArticle(article);
+  }
+  
+  private void whenIAddASuggestedButNotNewOrViewedArticle()
+  {
+    String articleExternalIdentifier = "An Identifier";
+    String note = "Blank Note";
+    Integer adminUserId = new Integer(999);
+    
+    SuggestedArticle article = new SuggestedArticle(subscriberId,
+                                                    articleExternalIdentifier,
+                                                    note,
+                                                    adminUserId);
+    article.setSuggestedArticleStatusId(ArticleStatus.READ.id());
+    
     subscriberArticleManager.addSuggestedArticle(article);
   }
   
